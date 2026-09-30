@@ -1,0 +1,41 @@
+{
+  "name": "n8n-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that lets Claude manage an n8n instance (workflows, executions, credentials, tags, webhooks) through the n8n public API",
+  "type": "module",
+  "bin": {
+    "n8n-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "pack:mcpb": "node scripts/pack-mcpb.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "n8n",
+    "claude",
+    "model-context-protocol"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

@@ -1,0 +1,10 @@
+src/
+test/
+coverage/
+*.test.ts
+tsconfig.json
+vitest.config.ts
+*.mcpb
+.env
+.env.example
+*.map

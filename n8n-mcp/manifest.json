@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/mcpb/main/dist/mcpb-manifest-v0.3.schema.json",
+  "manifest_version": "0.3",
+  "name": "n8n-mcp",
+  "display_name": "n8n",
+  "version": "1.0.0",
+  "description": "Manage n8n from Claude: workflows, executions, credentials, data tables, tags and webhooks.",
+  "long_description": "Connects Claude to an n8n instance through the n8n public REST API. Claude can list, create, edit, publish and archive workflows, debug failed executions, run workflows through their webhooks, manage credentials, tags and data tables, and run n8n's security audit. Enable read-only mode to let Claude look without changing anything.",
+  "author": {
+    "name": "TopLearning"
+  },
+  "license": "MIT",
+  "keywords": ["n8n", "automation", "workflows"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "N8N_API_URL": "${user_config.n8n_api_url}",
+        "N8N_API_KEY": "${user_config.n8n_api_key}",
+        "N8N_MCP_READ_ONLY": "${user_config.read_only}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "user_config": {
+    "n8n_api_url": {
+      "type": "string",
+      "title": "n8n URL",
+      "description": "Address of your n8n instance, e.g. https://n8n.example.com (the /api/v1 suffix is optional).",
+      "default": "https://n8n.toplearning.org",
+      "required": true
+    },
+    "n8n_api_key": {
+      "type": "string",
+      "title": "n8n API key",
+      "description": "Create it in n8n under Settings → n8n API.",
+      "sensitive": true,
+      "required": true
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "Read-only mode",
+      "description": "Only expose tools that read data; Claude cannot create, change or delete anything.",
+      "default": false,
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  }
+}
