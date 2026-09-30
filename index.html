@@ -335,6 +335,368 @@ path.rail.am{stroke:var(--amber)}path.rail.mi{stroke:var(--mint)}path.rail.faint
   .intro-dot,.intro-dlbl,.intro-run{display:none}
 }
 
+/* ───────── Guía de clase: sección minimalista en grafito (después de la presentación) ───────── */
+.hud-guide{pointer-events:auto;margin-left:14px;color:var(--fg);text-decoration:none;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;transition:border-color .2s,color .2s}
+.hud-guide:hover,.hud-guide:focus-visible{border-color:var(--cyan);color:var(--cyan);outline:none}
+.srail button[data-clase]{margin-top:10px}
+.srail button[data-clase] .rn{color:var(--fg)}
+.hud,.srail,.keys,.progress{transition:opacity .3s,visibility .3s}
+body.in-clase .hud,body.in-clase .srail,body.in-clase .keys,body.in-clase .progress{opacity:0;visibility:hidden}
+
+.clase{
+  --c-bg:#161618; --c-s1:#1c1c1f; --c-s2:#232327; --c-s3:#2b2b30; --c-code:#111113;
+  --c-line:#2c2c32; --c-line2:#3b3b43;
+  --c-tx:#ececee; --c-dim:#a8a8b0; --c-faint:#7a7a83;
+  --c-acc:#9fd6e8; --c-am:#e7b872; --c-mi:#8dd6b6; --c-vi:#bcaaf3; --c-rd:#f09aa0;
+  position:relative;z-index:2;isolation:isolate;
+  background:linear-gradient(180deg,var(--void) 0,var(--c-bg) 240px);
+  color:var(--c-tx);font-family:var(--f-body);font-size:17.5px;line-height:1.65;
+  margin:0 -8px -8px;padding-bottom:24px;-webkit-font-smoothing:antialiased;
+}
+.clase ::selection{background:#3a3a44;color:#fff}
+:where(.clase) a{color:inherit}
+.clase strong{color:var(--c-tx);font-weight:600}
+.clase :not(pre)>code{font-family:var(--f-mono);font-size:.84em;background:var(--c-s2);border:1px solid var(--c-line);border-radius:6px;padding:1px 6px;color:var(--c-tx);overflow-wrap:anywhere}
+.clase :focus-visible{outline:2px solid var(--c-acc);outline-offset:3px}
+.c-wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:16px}
+@media (min-width:760px){.c-wrap{padding-inline:32px}}
+
+/* reveal con leve inclinación 3D */
+.c-js .c-rv{opacity:0;transform:perspective(900px) rotateX(9deg) translateY(26px);transform-origin:50% 100%;
+  transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.c-js .c-rv.is-in{opacity:1;transform:none}
+
+/* portada */
+.c-hero{min-height:min(94vh,880px);display:grid;align-items:center;padding-top:120px;padding-bottom:56px}
+.c-hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.c-eyebrow{margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-faint)}
+.c-h1{margin:0;font-weight:700;font-size:clamp(40px,6.2vw,72px);line-height:1.03;letter-spacing:-.03em}
+.c-sub{margin:20px 0 0;max-width:36ch;font-size:clamp(18px,2vw,22px);line-height:1.5;color:var(--c-dim)}
+.c-meta{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.c-meta li{font-size:14px;line-height:1.3;color:var(--c-dim);background:var(--c-s1);border:1px solid var(--c-line2);border-radius:999px;padding:6px 12px}
+.c-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.c-btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--f-body);text-decoration:none;color:var(--c-bg);background:var(--c-tx);border:1px solid var(--c-tx);border-radius:10px;padding:13px 18px;transition:background .2s,color .2s,border-color .2s}
+.c-btn:hover{background:#fff}
+.c-btn.ghost{background:transparent;color:var(--c-tx);border-color:var(--c-line2)}
+.c-btn.ghost:hover{border-color:var(--c-tx)}
+
+.c-prism-stage{position:relative;height:360px;perspective:1100px;display:grid;place-items:center}
+.c-prism-stage::after{content:"";position:absolute;left:50%;bottom:34px;width:230px;height:40px;margin-left:-115px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent)}
+.c-prism{position:relative;width:150px;height:190px;transform-style:preserve-3d;transform:rotateX(-14deg) rotateY(-24deg);animation:c-spin 26s linear infinite}
+@keyframes c-spin{from{transform:rotateX(-14deg) rotateY(0)}to{transform:rotateX(-14deg) rotateY(-360deg)}}
+.c-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 18px;
+  background:linear-gradient(165deg,#2a2a2f,#1c1c20);border:1px solid var(--c-line2);border-radius:2px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(calc(var(--i) * 72deg)) translateZ(103px)}
+.c-face-n{font-family:var(--f-mono);font-size:12px;color:var(--c-faint)}
+.c-face-t{font-weight:700;font-size:23px;letter-spacing:-.01em;line-height:1.1}
+.c-face-d{font-size:13px;line-height:1.35;color:var(--c-dim)}
+.c-cap{position:absolute;left:-52.6px;top:-127.6px;width:255.2px;height:255.2px;background:#303036;
+  clip-path:polygon(79.39% 90.45%,97.55% 34.55%,50% 0,2.45% 34.55%,20.61% 90.45%);
+  transform:rotateX(90deg);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.c-prism-cap{position:absolute;left:0;right:0;bottom:0;margin:0;text-align:center;font-size:13px;color:var(--c-faint)}
+@media (max-width:860px){.c-hero-grid{grid-template-columns:minmax(0,1fr)}.c-hero{min-height:0;padding-top:96px}.c-prism-stage{height:320px}}
+
+/* índice fijo */
+.c-toc{position:sticky;top:0;z-index:5;background:rgba(22,22,24,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--c-line)}
+.c-toc .c-wrap{max-width:1280px}
+.c-toc-in{display:flex;align-items:center;gap:16px;height:56px}
+.c-toc-brand{flex:0 0 auto;font-size:14px;font-weight:600;white-space:nowrap;text-decoration:none}
+.c-toc-brand span{color:var(--c-faint);font-weight:500}
+.c-toc-list{position:relative;flex:1 1 auto;display:flex;gap:4px;margin:0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}
+.c-toc-list::-webkit-scrollbar{display:none}
+.c-toc-list a{display:block;white-space:nowrap;font-size:14px;line-height:1;color:var(--c-dim);text-decoration:none;padding:9px 12px;border-radius:999px;transition:background .2s,color .2s}
+.c-toc-list a:hover{color:var(--c-tx);background:var(--c-s2)}
+.c-toc-list a[aria-current="true"]{color:var(--c-bg);background:var(--c-tx)}
+.c-toc-list a b{font-family:var(--f-mono);font-weight:500;font-size:11px;margin-right:6px;opacity:.65}
+.c-toc-bar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--c-tx)}
+@media (max-width:640px){.c-toc-brand{display:none}}
+
+/* capítulos */
+.c-ch{padding-top:80px;scroll-margin-top:56px}
+.c-ch+.c-ch{margin-top:80px;border-top:1px solid var(--c-line)}
+.c-ch-head{max-width:780px;margin-bottom:36px}
+.c-num{display:block;margin-bottom:14px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.16em;color:var(--c-faint)}
+.c-h2{margin:0;font-weight:700;font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+.c-lead{margin:16px 0 0;font-size:clamp(18px,1.9vw,20.5px);line-height:1.6;color:var(--c-dim)}
+.c-h3{margin:0 0 12px;font-weight:600;font-size:20px;line-height:1.3;letter-spacing:-.01em}
+.c-sub-h{margin:56px 0 18px;font-weight:600;font-size:clamp(21px,2.4vw,26px);letter-spacing:-.015em;line-height:1.25}
+.c-sub-h span{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--c-faint);margin-right:10px;letter-spacing:.08em}
+.c-p{margin:0 0 14px;color:var(--c-dim)}
+.c-p:last-child{margin-bottom:0}
+.c-note{margin:14px 0 0;font-size:15.5px;color:var(--c-faint)}
+.clase .c-mt{margin-top:24px}
+.c-card{background:var(--c-s1);border:1px solid var(--c-line);border-radius:16px;padding:24px}
+.c-card.hl{border-color:var(--c-line2);background:var(--c-s2)}
+.c-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.c-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.c-grid-5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media (max-width:980px){.c-grid-5{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.c-grid-3{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.c-grid-2{grid-template-columns:minmax(0,1fr)}.c-grid-5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.c-lbl{display:block;margin-bottom:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-faint)}
+
+.c-tag{display:inline-flex;align-items:center;font-size:13px;font-weight:600;line-height:1;padding:6px 10px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.c-tag.am{color:var(--c-am)}.c-tag.mi{color:var(--c-mi)}.c-tag.vi{color:var(--c-vi)}.c-tag.acc{color:var(--c-acc)}.c-tag.rd{color:var(--c-rd)}.c-tag.dim{color:var(--c-dim)}
+.c-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+
+/* checks y listas */
+.c-checks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.c-checks li{position:relative;padding-left:32px;color:var(--c-dim)}
+.c-checks li::before{content:"";position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--c-line2);background:var(--c-s2)}
+.c-checks li::after{content:"";position:absolute;left:7px;top:8px;width:5px;height:9px;border:solid var(--c-mi);border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+.c-path{list-style:none;margin:0;padding:0;counter-reset:p}
+.c-path li{position:relative;padding:0 0 18px 40px;counter-increment:p}
+.c-path li:last-child{padding-bottom:0}
+.c-path li::before{content:counter(p);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:12px;color:var(--c-tx);background:var(--c-s3);border:1px solid var(--c-line2)}
+.c-path li::after{content:"";position:absolute;left:13px;top:30px;bottom:2px;width:1px;background:var(--c-line2)}
+.c-path li:last-child::after{display:none}
+.c-path b{display:block;font-weight:600}
+.c-path small{display:block;font-size:14.5px;color:var(--c-faint);line-height:1.5}
+
+.c-agenda{list-style:none;margin:0;padding:0;border-top:1px solid var(--c-line)}
+.c-agenda li{border-bottom:1px solid var(--c-line)}
+.c-agenda a{display:grid;grid-template-columns:128px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:14px 4px;text-decoration:none;transition:background .2s}
+.c-agenda a:hover{background:var(--c-s1)}
+.c-agenda time{font-family:var(--f-mono);font-size:14px;color:var(--c-faint)}
+.c-agenda .t{font-weight:500}
+.c-agenda .d{font-size:13px;color:var(--c-faint)}
+.c-agenda li.hl .t{font-weight:600}
+@media (max-width:560px){.c-agenda a{grid-template-columns:minmax(0,1fr);gap:2px}}
+
+.c-key{margin:40px 0 0;padding:4px 0 4px 22px;border-left:2px solid var(--c-tx);font-size:clamp(21px,2.6vw,28px);font-weight:600;line-height:1.35;letter-spacing:-.015em;max-width:32ch;text-wrap:balance}
+
+.c-concept b{display:block;font-weight:600;font-size:17px;margin-bottom:6px}
+.c-concept span{display:block;font-size:15px;line-height:1.5;color:var(--c-dim)}
+.c-concept{padding:18px}
+
+/* desplegables */
+.c-det{border:1px solid var(--c-line);border-radius:14px;background:var(--c-s1)}
+.c-det+.c-det{margin-top:10px}
+.c-det summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:16px 20px;font-weight:600;line-height:1.45}
+.c-det summary::-webkit-details-marker{display:none}
+.c-det summary::after{content:"+";flex:0 0 auto;font-family:var(--f-mono);font-weight:400;font-size:22px;line-height:1;color:var(--c-faint)}
+.c-det[open] summary::after{content:"\2212"}
+.c-det summary:focus-visible{outline-offset:-2px;border-radius:14px}
+.c-det-b{padding:0 20px 18px;color:var(--c-dim)}
+.c-det-b>*:last-child{margin-bottom:0}
+.c-det-b p{margin:0 0 12px}
+
+/* código */
+.c-code{margin:0;background:var(--c-code);border:1px solid var(--c-line);border-radius:14px;overflow:hidden;min-width:0}
+.c-code-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 8px 8px 16px;border-bottom:1px solid var(--c-line)}
+.c-code-h span{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-faint)}
+.c-code pre{margin:0;padding:16px 18px;overflow-x:auto;font-family:var(--f-mono);font-size:14px;line-height:1.7;color:#dcdce1;white-space:pre;tab-size:2}
+.c-code pre code{font:inherit;background:none;border:0;padding:0;white-space:inherit}
+.c-copy{flex:0 0 auto;font:500 13px/1 var(--f-body);color:var(--c-tx);background:var(--c-s2);border:1px solid var(--c-line2);border-radius:8px;padding:8px 12px;cursor:pointer;transition:border-color .2s,color .2s}
+.c-copy:hover{border-color:var(--c-tx)}
+.c-copy.ok{color:var(--c-mi);border-color:var(--c-mi)}
+.c-copy.err{color:var(--c-am);border-color:var(--c-am)}
+.cj-k{color:#a9c1ff}.cj-s{color:#e4e4e8}.cj-n{color:var(--c-acc)}.cj-b{color:var(--c-mi)}.cj-null{color:var(--c-vi)}
+
+/* Claude Code */
+.c-tree{list-style:none;margin:0;padding:18px 20px;font-family:var(--f-mono);font-size:14.5px;line-height:1.9;background:var(--c-code);border:1px solid var(--c-line);border-radius:14px}
+.c-tree li{display:flex;gap:14px;flex-wrap:wrap}
+.c-tree li.f{padding-left:22px}
+.c-tree .nm{color:var(--c-tx)}
+.c-tree .cm{color:var(--c-faint)}
+.c-modes{display:grid;gap:12px}
+.c-mode{display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;align-items:start;padding:20px 22px;background:var(--c-s1);border:1px solid var(--c-line);border-radius:14px}
+.c-mode h5{margin:0 0 10px;font-size:18px;font-weight:600}
+.c-mode p{margin:0;color:var(--c-dim)}
+@media (max-width:640px){.c-mode{grid-template-columns:minmax(0,1fr);gap:6px}}
+.c-callout{margin-top:16px;display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-radius:14px;background:var(--c-s2);border:1px solid var(--c-line2)}
+.c-callout::before{content:"!";flex:0 0 24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--c-bg);background:var(--c-tx);margin-top:1px}
+.c-callout p{margin:0}
+.c-callout.warn::before{background:var(--c-am)}
+
+.c-loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.c-loop li{padding:16px 8px;text-align:center;border:1px solid var(--c-line);border-radius:12px;background:var(--c-s1);font-weight:600;font-size:15px;
+  animation:c-loop 9s infinite both;animation-delay:calc(var(--i) * 1.5s - 9s)}
+.c-loop li small{display:block;margin-bottom:4px;font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--c-faint)}
+@keyframes c-loop{0%{border-color:var(--c-tx);background:var(--c-s3);transform:translateY(-4px)}15%{border-color:var(--c-tx);background:var(--c-s3);transform:translateY(-4px)}20%,100%{border-color:var(--c-line);background:var(--c-s1);transform:none}}
+.c-loop-back{margin:12px 0 0;font-size:14.5px;color:var(--c-faint);text-align:center}
+@media (max-width:700px){.c-loop{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+.c-flips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.c-flips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.c-flip{all:unset;box-sizing:border-box;display:block;width:100%;height:176px;perspective:900px;cursor:pointer;border-radius:14px;font:inherit;color:inherit;text-align:left}
+.c-flip:focus-visible{outline:2px solid var(--c-acc);outline-offset:3px}
+.c-flip-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.2,.7,.2,1)}
+.c-flip.is-flipped .c-flip-in{transform:rotateY(180deg)}
+.c-flip-f,.c-flip-b{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px;border-radius:14px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.c-flip-f{background:var(--c-s2);border:1px solid var(--c-line2)}
+.c-flip-f b{font-size:24px;font-weight:700;letter-spacing:-.015em}
+.c-flip-f small,.c-flip-b small{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-faint)}
+.c-flip-b{background:var(--c-tx);color:#18181a;transform:rotateY(180deg);font-size:15.5px;line-height:1.45;font-weight:500}
+.c-flip-b small{color:#6b6b73}
+.c-flip:hover .c-flip-f{border-color:var(--c-dim)}
+@media (max-width:420px){.c-flip{height:200px}.c-flip-b{font-size:14.5px;padding:14px}.c-flip-f{padding:14px}}
+
+/* clasificar / extraer */
+.c-big{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
+.c-msg{margin:0;font-size:clamp(19px,2.2vw,23px);line-height:1.8;font-weight:500;color:var(--c-tx)}
+.c-msg mark{background:none;color:inherit;border-bottom:2px solid var(--c-acc);padding:0 1px}
+.c-msg .in-am{background:rgba(231,184,114,.12);border-radius:6px;padding:2px 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.c-msg .in-mi{background:rgba(141,214,182,.12);border-radius:6px;padding:2px 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.c-legend{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 0;padding:0;list-style:none;font-size:14px;color:var(--c-faint)}
+.c-legend li{display:flex;align-items:center;gap:8px}
+.c-legend i{display:inline-block;width:18px;height:10px;border-radius:3px}
+.c-legend .l1{border-bottom:2px solid var(--c-acc);height:8px;border-radius:0}
+.c-legend .l2{background:rgba(231,184,114,.35)}
+.c-legend .l3{background:rgba(141,214,182,.35)}
+.c-intent{display:grid;gap:10px}
+.c-intent div{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.c-intent q{color:var(--c-dim);font-size:15.5px}
+.c-kv{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;font-size:15px}
+.c-kv dt{font-family:var(--f-mono);font-size:13.5px;color:#a9c1ff}
+.c-kv dd{margin:0;font-family:var(--f-mono);font-size:13.5px;color:var(--c-tx)}
+
+.c-stack-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
+.c-stack-scene{height:380px;perspective:1400px;display:grid;place-items:center}
+.c-stack{position:relative;width:220px;height:220px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-38deg);animation:c-sway 10s ease-in-out infinite alternate}
+@keyframes c-sway{from{transform:rotateX(58deg) rotateZ(-44deg)}to{transform:rotateX(58deg) rotateZ(-30deg)}}
+.c-layer{position:absolute;inset:0;border-radius:18px;border:1px solid var(--c-line2);background:rgba(38,38,43,.94);transform:translateZ(0);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);display:grid;place-items:center}
+.c-stack-wrap.is-in .c-layer.l2{transform:translateZ(80px);transition-delay:.1s}
+.c-stack-wrap.is-in .c-layer.l3{transform:translateZ(160px);transition-delay:.2s}
+.c-layer.l1{border-color:rgba(141,214,182,.55)}
+.c-layer.l2{border-color:rgba(159,214,232,.55)}
+.c-layer .lt{position:absolute;left:16px;top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--c-faint)}
+.c-lines{display:grid;gap:10px;width:62%}
+.c-lines i{display:block;height:8px;border-radius:4px;background:#4a4a52}
+.c-lines i:nth-child(2){width:84%}.c-lines i:nth-child(3){width:92%}.c-lines i:nth-child(4){width:58%}
+.c-orb{width:92px;height:92px;border-radius:50%;border:1.5px solid var(--c-acc);box-shadow:inset 0 0 0 14px rgba(159,214,232,.08);display:grid;place-items:center}
+.c-orb::after{content:"";width:18px;height:18px;border-radius:50%;background:var(--c-acc)}
+.c-cells{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:64%}
+.c-cells i{display:block;height:22px;border-radius:5px;border:1px solid rgba(141,214,182,.5);background:rgba(141,214,182,.08)}
+@media (max-width:760px){.c-stack-wrap{grid-template-columns:minmax(0,1fr);gap:8px}.c-stack-scene{height:320px}}
+
+/* workflow n8n */
+.c-wf{display:flex;align-items:flex-start;padding:28px 24px;border:1px solid var(--c-line);border-radius:18px;
+  background:radial-gradient(circle at 1px 1px,#2e2e34 1px,transparent 1.6px) 0 0/22px 22px,var(--c-s1)}
+.c-n{flex:0 0 auto;width:112px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.c-n .ic{width:60px;height:60px;border-radius:15px;border:1.5px solid var(--c-line2);background:var(--c-s2);display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--c-dim)}
+.c-n.ai{width:200px}
+.c-n.ai .ic{width:76px;border-color:var(--c-acc);color:var(--c-acc)}
+.c-n b{font-size:14px;font-weight:600;line-height:1.25}
+.c-n small{font-size:12.5px;line-height:1.3;color:var(--c-faint)}
+.c-subs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:4px}
+.c-subs span{font-size:12px;line-height:1.2;color:var(--c-dim);border:1px dashed var(--c-line2);border-radius:8px;padding:5px 8px;background:var(--c-bg)}
+.c-arr{position:relative;flex:1 1 16px;min-width:14px;height:2px;margin-top:30px;background:var(--c-line2);overflow:hidden}
+.c-arr::before{content:"";position:absolute;top:-2px;left:-10px;width:10px;height:6px;border-radius:3px;background:var(--c-tx);animation:c-pkt 2.4s linear infinite}
+@keyframes c-pkt{to{left:100%}}
+.c-outs{flex:0 0 auto;display:flex;flex-direction:column;gap:6px;margin-top:2px}
+.c-out{font-size:13px;font-weight:600;line-height:1;padding:7px 10px;border-radius:8px;border:1px solid currentColor;text-align:center;white-space:nowrap}
+.c-out.am{color:var(--c-am)}.c-out.mi{color:var(--c-mi)}.c-out.acc{color:var(--c-acc)}.c-out.vi{color:var(--c-vi)}.c-out.dim{color:var(--c-dim)}
+@media (max-width:900px){
+  .c-wf{flex-direction:column;align-items:stretch;padding:20px}
+  .c-n,.c-n.ai{width:auto;display:grid;grid-template-columns:60px minmax(0,1fr);column-gap:14px;row-gap:2px;align-items:center;text-align:left}
+  .c-n .ic,.c-n.ai .ic{grid-row:span 2;width:60px;height:60px}
+  .c-n .c-subs{grid-column:2;justify-content:flex-start}
+  .c-n.ai .ic{grid-row:span 3}
+  .c-arr{flex:0 0 24px;width:2px;height:24px;min-width:0;margin:6px 0 6px 29px}
+  .c-arr::before{top:-10px;left:-2px;width:6px;height:10px;animation-name:c-pkt-v}
+  .c-outs{flex-direction:row;flex-wrap:wrap;margin-left:0}
+}
+@keyframes c-pkt-v{to{top:100%}}
+
+.c-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
+.c-steps li{counter-increment:s;display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 20px;background:var(--c-s1);border:1px solid var(--c-line);border-radius:14px}
+.c-steps li::before{content:counter(s);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;color:var(--c-bg);background:var(--c-tx)}
+.c-steps b{display:block;font-weight:600;margin-bottom:2px}
+.c-steps p{margin:0;color:var(--c-dim)}
+.c-codes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.c-codes .full{grid-column:1/-1}
+@media (max-width:860px){.c-codes{grid-template-columns:minmax(0,1fr)}}
+
+/* datos faltantes */
+.c-trio{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.c-trio li{position:relative;padding:20px;border:1px solid var(--c-line);border-radius:14px;background:var(--c-s1)}
+.c-trio li+li::before{content:"";position:absolute;left:-21px;top:50%;width:12px;height:12px;border:solid var(--c-faint);border-width:2px 2px 0 0;transform:translateY(-50%) rotate(45deg)}
+.c-trio b{display:block;font-size:18px;font-weight:600;margin-bottom:4px}
+.c-trio span{display:block;font-size:15px;color:var(--c-dim)}
+@media (max-width:760px){.c-trio{grid-template-columns:minmax(0,1fr);gap:26px}.c-trio li+li::before{left:50%;top:-19px;transform:translateX(-50%) rotate(135deg)}}
+.c-verdict{display:flex;align-items:center;gap:10px;font-weight:600;margin-bottom:10px}
+.c-verdict i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;position:relative}
+.c-verdict.no i{background:rgba(240,154,160,.16);border:1px solid var(--c-rd)}
+.c-verdict.no i::before,.c-verdict.no i::after{content:"";position:absolute;width:10px;height:2px;background:var(--c-rd);transform:rotate(45deg)}
+.c-verdict.no i::after{transform:rotate(-45deg)}
+.c-verdict.ok i{background:rgba(141,214,182,.16);border:1px solid var(--c-mi)}
+.c-verdict.ok i::before{content:"";width:5px;height:9px;margin-top:-2px;border:solid var(--c-mi);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.c-verdict.no{color:var(--c-rd)}.c-verdict.ok{color:var(--c-mi)}
+
+/* tu turno */
+.c-tasks{display:grid;gap:16px}
+.c-task{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px 32px;align-items:start}
+@media (max-width:860px){.c-task{grid-template-columns:minmax(0,1fr)}}
+.c-task blockquote{margin:0;max-width:34ch;font-size:18px;line-height:1.6;font-weight:500;color:var(--c-tx)}
+.c-task .c-det{background:var(--c-bg)}
+.c-sol{display:grid;gap:12px}
+.c-sol dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:15px}
+.c-sol dt{color:var(--c-faint)}
+.c-sol dd{margin:0;color:var(--c-tx)}
+
+/* RAG */
+.c-fan-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:center}
+.c-fan-scene{height:340px;perspective:1200px;display:grid;place-items:center}
+.c-fan{position:relative;width:140px;height:180px;transform-style:preserve-3d;transform:rotateX(14deg) rotateY(-24deg);animation:c-float 7s ease-in-out infinite alternate}
+@keyframes c-float{from{transform:rotateX(14deg) rotateY(-30deg) translateY(4px)}to{transform:rotateX(10deg) rotateY(-16deg) translateY(-4px)}}
+.c-doc{position:absolute;inset:0;padding:16px 14px;border-radius:10px;border:1px solid var(--c-line2);background:linear-gradient(170deg,#2a2a2f,#1d1d21);
+  transform:translateX(calc((var(--i) - 1.5) * 52px)) translateZ(calc(var(--i) * -34px)) rotateY(calc((var(--i) - 1.5) * 12deg));
+  transition:transform 1.1s cubic-bezier(.2,.7,.2,1),border-color .6s;display:flex;flex-direction:column;gap:9px}
+.c-doc b{font-size:13px;font-weight:600;color:var(--c-dim);margin-bottom:4px}
+.c-doc i{display:block;height:6px;border-radius:3px;background:#46464e}
+.c-doc i:nth-of-type(2){width:80%}.c-doc i:nth-of-type(3){width:92%}.c-doc i:nth-of-type(4){width:60%}
+.c-doc em{position:absolute;left:12px;bottom:12px;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--c-bg);background:var(--c-am);border-radius:6px;padding:4px 7px;opacity:0;transition:opacity .5s .7s}
+.c-fan-wrap.is-in .c-doc.key{transform:translateX(0) translateY(-26px) translateZ(110px) rotateY(0);border-color:var(--c-am)}
+.c-fan-wrap.is-in .c-doc.key b{color:var(--c-tx)}
+.c-fan-wrap.is-in .c-doc.key em{opacity:1}
+@media (max-width:760px){.c-fan-wrap{grid-template-columns:minmax(0,1fr);gap:8px}.c-fan-scene{height:300px}}
+.c-rag-ex{display:grid;gap:0;margin-top:28px;border:1px solid var(--c-line);border-radius:16px;overflow:hidden}
+.c-rag-ex>div{display:grid;grid-template-columns:190px minmax(0,1fr);gap:18px;padding:18px 22px;background:var(--c-s1)}
+.c-rag-ex>div+div{border-top:1px solid var(--c-line)}
+.c-rag-ex span{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--c-faint);padding-top:3px}
+.c-rag-ex p{margin:0}
+.c-rag-ex .frag{border-left:2px solid var(--c-am);padding-left:14px;color:var(--c-dim)}
+@media (max-width:640px){.c-rag-ex>div{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* autoevaluación */
+.c-quiz .c-q-n{margin:0 0 6px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-faint)}
+.c-quiz .c-q-t{margin:0 0 16px;font-weight:600;font-size:19px;line-height:1.45}
+.c-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.c-opts{grid-template-columns:minmax(0,1fr)}}
+.c-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:500 16px/1.4 var(--f-body);color:var(--c-tx);background:var(--c-bg);border:1px solid var(--c-line2);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .2s,background .2s}
+.c-opt:hover{border-color:var(--c-dim)}
+.c-opt b{flex:0 0 28px;height:28px;border-radius:8px;display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;background:var(--c-s3)}
+.c-opt.is-ok{border-color:var(--c-mi);background:rgba(141,214,182,.08)}
+.c-opt.is-ok b{background:var(--c-mi);color:var(--c-bg)}
+.c-opt.is-no{border-color:var(--c-rd);background:rgba(240,154,160,.06)}
+.c-opt.is-no b{background:var(--c-rd);color:var(--c-bg)}
+.c-fb{min-height:1.65em;margin:14px 0 0;font-size:16px}
+.c-fb.ok{color:var(--c-mi)}.c-fb.no{color:var(--c-rd)}
+.c-goal{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:18px 22px;border-radius:14px;border:1px dashed var(--c-line2)}
+.c-goal b{font-size:18px}
+.c-goal span{color:var(--c-dim)}
+
+/* cierre */
+.c-final{margin:0;font-weight:700;font-size:clamp(30px,5vw,56px);line-height:1.12;letter-spacing:-.03em;text-wrap:balance}
+.c-final span{color:var(--c-faint)}
+.c-foot{margin-top:96px;padding:28px 0 12px;border-top:1px solid var(--c-line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:14px;color:var(--c-faint)}
+.c-foot nav{display:flex;flex-wrap:wrap;gap:18px}
+.c-foot a{text-decoration:none;color:var(--c-dim)}
+.c-foot a:hover{color:var(--c-tx)}
+
+@media (prefers-reduced-motion:reduce){
+  .clase *,.clase *::before,.clase *::after{animation:none!important;transition:none!important}
+  .c-js .c-rv{opacity:1;transform:none}
+  .c-stack .c-layer.l2{transform:translateZ(80px)}
+  .c-stack .c-layer.l3{transform:translateZ(160px)}
+  .c-arr::before{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -345,11 +707,11 @@ path.rail.am{stroke:var(--amber)}path.rail.mi{stroke:var(--mint)}path.rail.faint
 </defs></svg>
 <canvas id="gl" aria-hidden="true"></canvas>
 <header class="hud">
-  <span class="hud-brand">TOP LEARNING <b>·</b> E1577</span>
+  <span class="hud-brand">TOP LEARNING <b>·</b> E1577<a class="hud-guide" href="#clase">GUÍA ↓</a></span>
   <span class="hud-scene" id="hudScene">01 / 19 · INTRO</span>
 </header>
 <div class="progress" aria-hidden="true"><span id="prog"></span></div>
-<nav class="srail" aria-label="Escenas"><button type="button" data-go="1" aria-label="Escena 1: Intro"><span class="rn">01</span><span class="rt">Intro</span></button><button type="button" data-go="2" aria-label="Escena 2: De la clase anterior a hoy"><span class="rn">02</span><span class="rt">De la clase anterior a hoy</span></button><button type="button" data-go="3" aria-label="Escena 3: Claude Code como data flow"><span class="rn">03</span><span class="rt">Claude Code como data flow</span></button><button type="button" data-go="4" aria-label="Escena 4: Plan mode"><span class="rn">04</span><span class="rt">Plan mode</span></button><button type="button" data-go="5" aria-label="Escena 5: Contexto persistente"><span class="rn">05</span><span class="rt">Contexto persistente</span></button><button type="button" data-go="6" aria-label="Escena 6: Entra Carlos"><span class="rn">06</span><span class="rt">Entra Carlos</span></button><button type="button" data-go="7" aria-label="Escena 7: Clasificación"><span class="rn">07</span><span class="rt">Clasificación</span></button><button type="button" data-go="8" aria-label="Escena 8: Extracción"><span class="rn">08</span><span class="rt">Extracción</span></button><button type="button" data-go="9" aria-label="Escena 9: El nacimiento del JSON"><span class="rn">09</span><span class="rt">El nacimiento del JSON</span></button><button type="button" data-go="10" aria-label="Escena 10: Conversar vs automatizar"><span class="rn">10</span><span class="rt">Conversar vs automatizar</span></button><button type="button" data-go="11" aria-label="Escena 11: El prompt como transformador"><span class="rn">11</span><span class="rt">El prompt como transformador</span></button><button type="button" data-go="12" aria-label="Escena 12: Entramos a n8n"><span class="rn">12</span><span class="rt">Entramos a n8n</span></button><button type="button" data-go="13" aria-label="Escena 13: Routing"><span class="rn">13</span><span class="rt">Routing</span></button><button type="button" data-go="14" aria-label="Escena 14: El puente"><span class="rn">14</span><span class="rt">El puente</span></button><button type="button" data-go="15" aria-label="Escena 15: Cuando faltan datos"><span class="rn">15</span><span class="rt">Cuando faltan datos</span></button><button type="button" data-go="16" aria-label="Escena 16: Pruebas"><span class="rn">16</span><span class="rt">Pruebas</span></button><button type="button" data-go="17" aria-label="Escena 17: RAG"><span class="rn">17</span><span class="rt">RAG</span></button><button type="button" data-go="18" aria-label="Escena 18: El sistema completo"><span class="rn">18</span><span class="rt">El sistema completo</span></button><button type="button" data-go="19" aria-label="Escena 19: Final"><span class="rn">19</span><span class="rt">Final</span></button></nav>
+<nav class="srail" aria-label="Escenas"><button type="button" data-go="1" aria-label="Escena 1: Intro"><span class="rn">01</span><span class="rt">Intro</span></button><button type="button" data-go="2" aria-label="Escena 2: De la clase anterior a hoy"><span class="rn">02</span><span class="rt">De la clase anterior a hoy</span></button><button type="button" data-go="3" aria-label="Escena 3: Claude Code como data flow"><span class="rn">03</span><span class="rt">Claude Code como data flow</span></button><button type="button" data-go="4" aria-label="Escena 4: Plan mode"><span class="rn">04</span><span class="rt">Plan mode</span></button><button type="button" data-go="5" aria-label="Escena 5: Contexto persistente"><span class="rn">05</span><span class="rt">Contexto persistente</span></button><button type="button" data-go="6" aria-label="Escena 6: Entra Carlos"><span class="rn">06</span><span class="rt">Entra Carlos</span></button><button type="button" data-go="7" aria-label="Escena 7: Clasificación"><span class="rn">07</span><span class="rt">Clasificación</span></button><button type="button" data-go="8" aria-label="Escena 8: Extracción"><span class="rn">08</span><span class="rt">Extracción</span></button><button type="button" data-go="9" aria-label="Escena 9: El nacimiento del JSON"><span class="rn">09</span><span class="rt">El nacimiento del JSON</span></button><button type="button" data-go="10" aria-label="Escena 10: Conversar vs automatizar"><span class="rn">10</span><span class="rt">Conversar vs automatizar</span></button><button type="button" data-go="11" aria-label="Escena 11: El prompt como transformador"><span class="rn">11</span><span class="rt">El prompt como transformador</span></button><button type="button" data-go="12" aria-label="Escena 12: Entramos a n8n"><span class="rn">12</span><span class="rt">Entramos a n8n</span></button><button type="button" data-go="13" aria-label="Escena 13: Routing"><span class="rn">13</span><span class="rt">Routing</span></button><button type="button" data-go="14" aria-label="Escena 14: El puente"><span class="rn">14</span><span class="rt">El puente</span></button><button type="button" data-go="15" aria-label="Escena 15: Cuando faltan datos"><span class="rn">15</span><span class="rt">Cuando faltan datos</span></button><button type="button" data-go="16" aria-label="Escena 16: Pruebas"><span class="rn">16</span><span class="rt">Pruebas</span></button><button type="button" data-go="17" aria-label="Escena 17: RAG"><span class="rn">17</span><span class="rt">RAG</span></button><button type="button" data-go="18" aria-label="Escena 18: El sistema completo"><span class="rn">18</span><span class="rt">El sistema completo</span></button><button type="button" data-go="19" aria-label="Escena 19: Final"><span class="rn">19</span><span class="rt">Final</span></button><button type="button" data-clase aria-label="Guía de clase"><span class="rn">G</span><span class="rt">Guía de clase</span></button></nav>
 <p class="keys">↓ espacio · avanzar &nbsp; ↑ · regresar</p>
 <main id="main">
 <section class="scene s-intro" id="s1" data-len="70" data-beats="0" data-title="Intro" style="--len:70"><div class="stage"><h2 class="sr">1. Intro</h2>
@@ -384,6 +746,679 @@ path.rail.am{stroke:var(--amber)}path.rail.mi{stroke:var(--mint)}path.rail.faint
   </div>
 </div></div></section><section class="scene " id="s17" data-len="320" data-beats="0 .26 .46 .66 .86 1" data-title="RAG" style="--len:320"><div class="stage"><h2 class="sr">17. RAG</h2><svg class="viz" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g data-a="0:x0,s1|.24:x0,s1|.34:x-36,s1.05|.6:x-36,s1.05|.7:x0,s1|1:x0,s1"><g transform="translate(230,70)"><g><g class="bubble "><rect x="-200.0" y="-38.0" width="400" height="76.0" rx="14"/><text y="-6.5" style="font-size:20px">¿Puedo devolver este producto</text><text y="20.5" style="font-size:20px">después de 45 días?</text></g></g></g><path id="q17" class="track faint" d="M250,116 L272,208"/><path id="r17" class="track hot" d="M370,282 C480,282 560,268 704,268" data-draw=".32 .38"/><path id="k17" class="track am" d="M735,334 C690,380 670,420 636,420" data-draw=".46 .5"/><path id="c17" class="track hot" d="M484,420 C420,420 372,392 350,348" data-draw=".6 .63"/><text x="530" y="256" class="lbl cyl" data-a="0:o0,y0|0.33:o0,y0|0.360:o1,y0">RETRIEVAL</text><g data-a="0:o.12,s.9|.22:o.12,s.9|.32:o1,s1"><path class="track net" d="M680,110 L760,270"/><path class="track net" d="M880,120 L760,270"/><path class="track net" d="M760,270 L910,340"/><path class="track net" d="M760,270 L700,450"/><path class="track net" d="M680,110 L880,120"/><path class="track net" d="M910,340 L700,450"/><g transform="translate(680,110)"><g><g class="doc "><path d="M-39.0,-48.0 L23.0,-48.0 L39.0,-32.0 L39.0,48.0 L-39.0,48.0 Z"/><path class="dbl" d="M23.0,-48.0 L23.0,-32.0 L39.0,-32.0"/><rect class="ln" x="-27.0" y="-12.0" width="54" height="4" rx="2"/><rect class="ln" x="-27.0" y="2.0" width="36" height="4" rx="2"/><rect class="ln" x="-27.0" y="16.0" width="54" height="4" rx="2"/><text class="dlbl" y="-24.0">PDF</text></g></g></g><g transform="translate(880,120)"><g><g class="doc "><path d="M-39.0,-48.0 L23.0,-48.0 L39.0,-32.0 L39.0,48.0 L-39.0,48.0 Z"/><path class="dbl" d="M23.0,-48.0 L23.0,-32.0 L39.0,-32.0"/><rect class="ln" x="-27.0" y="-12.0" width="54" height="4" rx="2"/><rect class="ln" x="-27.0" y="2.0" width="36" height="4" rx="2"/><rect class="ln" x="-27.0" y="16.0" width="54" height="4" rx="2"/><text class="dlbl" y="-24.0">DOC</text></g></g></g><g transform="translate(910,344)"><g><g class="doc "><path d="M-39.0,-48.0 L23.0,-48.0 L39.0,-32.0 L39.0,48.0 L-39.0,48.0 Z"/><path class="dbl" d="M23.0,-48.0 L23.0,-32.0 L39.0,-32.0"/><rect class="ln" x="-27.0" y="-12.0" width="54" height="4" rx="2"/><rect class="ln" x="-27.0" y="2.0" width="36" height="4" rx="2"/><rect class="ln" x="-27.0" y="16.0" width="54" height="4" rx="2"/><text class="dlbl" y="-24.0">FAQ</text></g></g></g><g transform="translate(700,452)"><g><g class="doc "><path d="M-48.0,-35.0 A48.0,11 0 0,1 48.0,-35.0 L48.0,35.0 A48.0,11 0 0,1 -48.0,35.0 Z"/><path class="dbl" d="M-48.0,-35.0 A48.0,11 0 0,0 48.0,-35.0"/><path class="dbl" d="M-48.0,-9.0 A48.0,11 0 0,0 48.0,-9.0"/><text class="dlbl" y="28.0">DATABASE</text></g></g></g><g transform="translate(766,270)"><g><g class="doc key"><path d="M-60.0,-70.0 L44.0,-70.0 L60.0,-54.0 L60.0,70.0 L-60.0,70.0 Z"/><path class="dbl" d="M44.0,-70.0 L44.0,-54.0 L60.0,-54.0"/><rect class="ln" x="-48.0" y="-34.0" width="96" height="4" rx="2"/><rect class="ln" x="-48.0" y="-20.0" width="78" height="4" rx="2"/><rect class="ln" x="-48.0" y="-6.0" width="96" height="4" rx="2"/><rect class="ln" x="-48.0" y="8.0" width="78" height="4" rx="2"/><rect class="ln" x="-48.0" y="22.0" width="96" height="4" rx="2"/><rect class="ln" x="-48.0" y="36.0" width="78" height="4" rx="2"/><text class="dlbl" y="-46.0">POLICIES</text><rect class="chunk" data-on=".42" x="-48" y="-12" width="96" height="10" rx="3"/><rect class="chunk" data-on=".44" x="-48" y="16" width="80" height="10" rx="3"/></g></g></g><text x="766" y="190" class="tiny">políticas NovaShop · ejemplo</text></g><g transform="translate(290,282)"><g><circle class="socket" r="92.7"/><g class="fallback-core"><circle r="76"/><circle r="47.1"/><circle r="21.3"/></g><circle class="anchor" r="76" data-act=".02 .2 .62 .86"/></g></g><g transform="translate(250,452)"><g data-a="0:o0|.1:o0|.14:o1|.3:o1|.36:o.3|.7:o.3|.74:o0"><g class="bubble ghost"><rect x="-160.0" y="-22.05" width="320" height="44.1" rx="14"/><text y="6.3" style="font-size:18px">Creo que sí, normalmente…</text></g></g></g><path id="strike" class="track rd thick" d="M120,454 L380,454" data-draw=".2 .24" data-a="0:o1|.7:o1|.74:o0"/><g transform="translate(250,510)"><g data-a="0:o0|.2:o0|.23:o1|.5:o1|.54:o0"><g class="chip rd"><rect x="-75.19999999999999" y="-15.0" width="150.39999999999998" height="30" rx="15.0"/><text y="4.3" style="font-size:12px">MISSING KNOWLEDGE</text></g></g></g><g transform="translate(560,420)"><g data-a="0:o.2|.52:o.2|.56:o1"><g class="node" data-on=".58"><rect x="-76" y="-24" width="152" height="48" rx="9"/><text y="5">CONTEXT</text></g></g></g><g transform="translate(300,566)"><g data-a="0:o0,y10|.78:o0,y10|.84:o1,y0"><g class="bubble ans"><rect x="-270.0" y="-32.300000000000004" width="540" height="64.60000000000001" rx="14"/><text y="-5.5" style="font-size:17px">No: el plazo de devolución es de 30 días naturales.</text><text y="17.4" style="font-size:17px">Si el producto tiene un defecto, aplica la garantía.</text></g></g></g><g data-ride="q17 0.02 0.1 "><circle r="6" class="pkt "/></g><g data-ride="r17 0.34 0.42 "><circle r="5" class="pkt "/></g><g data-ride="r17 0.36 0.44 "><circle r="5" class="pkt "/></g><g data-ride="k17 0.48 0.58 "><g class="chip am"><rect x="-75.19999999999999" y="-15.0" width="150.39999999999998" height="30" rx="15.0"/><text y="4.3" style="font-size:12px">30 días naturales</text></g></g><g data-ride="k17 0.51 0.61 "><g class="chip am"><rect x="-75.19999999999999" y="-15.0" width="150.39999999999998" height="30" rx="15.0"/><text y="4.3" style="font-size:12px">garantía 12 meses</text></g></g><g data-ride="c17 0.62 0.68 "><circle r="6" class="pkt "/></g><g data-ride="c17 0.64 0.7 "><circle r="6" class="pkt "/></g></g></svg><div class="cap"><p data-a="0:o1,y0|0.3:o1,y0|0.340:o0,y-1.5">EL MODELO NO CONOCE LAS POLÍTICAS DE TU EMPRESA.</p><p data-a="0:o0,y1.5|0.34:o0,y1.5|0.380:o1,y0|0.72:o1,y0|0.760:o0,y-1.5">RETRIEVAL: BUSCAR, ENCONTRAR Y ENTREGAR SOLO LO RELEVANTE.</p><p data-a="0:o0,y1.5|0.78:o0,y1.5|0.820:o1,y0">RAG NO CAMBIA EL MODELO. LE ENTREGA INFORMACIÓN RELEVANTE.</p></div></div></section><section class="scene " id="s18" data-len="260" data-beats="0 .36 1" data-title="El sistema completo" style="--len:260"><div class="stage"><h2 class="sr">18. El sistema completo</h2><svg class="viz" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g data-a="0:o.5,s1.55|.36:o1,s1|1:o1,s1"><path id="fa" class="track faint" d="M75,330 L330,330 C400,330 410,265 480,265 C550,265 555,330 605,330 L805,330 C860,330 870,200 935,200"/><path id="fb" class="track faint" d="M75,330 L330,330 C400,330 410,395 480,395 C550,395 555,330 605,330 L805,330 L935,330"/><path id="fc" class="track faint" d="M75,330 L330,330 C400,330 410,265 480,265 C550,265 555,330 605,330 L805,330 C860,330 870,460 935,460"/><path id="fr" class="track faint" d="M330,168 L330,272"/><g transform="translate(75,330)"><g><g class="node on"><rect x="-56.0" y="-20.0" width="112" height="40" rx="9"/><text y="5">CUSTOMER</text></g></g></g><g transform="translate(195,330)"><g><g class="node on"><rect x="-50.0" y="-20.0" width="100" height="40" rx="9"/><text y="5">MESSAGE</text></g></g></g><g transform="translate(300,118)"><g><g class="doc "><path d="M-20.0,-25.0 L4.0,-25.0 L20.0,-9.0 L20.0,25.0 L-20.0,25.0 Z"/><path class="dbl" d="M4.0,-25.0 L4.0,-9.0 L20.0,-9.0"/><rect class="ln" x="-8.0" y="11.0" width="16" height="4" rx="2"/><rect class="ln" x="-8.0" y="25.0" width="6" height="4" rx="2"/><text class="dlbl" y="-1.0"></text></g></g></g><g transform="translate(330,108)"><g><g class="doc "><path d="M-20.0,-25.0 L4.0,-25.0 L20.0,-9.0 L20.0,25.0 L-20.0,25.0 Z"/><path class="dbl" d="M4.0,-25.0 L4.0,-9.0 L20.0,-9.0"/><rect class="ln" x="-8.0" y="11.0" width="16" height="4" rx="2"/><rect class="ln" x="-8.0" y="25.0" width="6" height="4" rx="2"/><text class="dlbl" y="-1.0"></text></g></g></g><g transform="translate(360,118)"><g><g class="doc "><path d="M-20.0,-25.0 L4.0,-25.0 L20.0,-9.0 L20.0,25.0 L-20.0,25.0 Z"/><path class="dbl" d="M4.0,-25.0 L4.0,-9.0 L20.0,-9.0"/><rect class="ln" x="-8.0" y="11.0" width="16" height="4" rx="2"/><rect class="ln" x="-8.0" y="25.0" width="6" height="4" rx="2"/><text class="dlbl" y="-1.0"></text></g></g></g><text x="330" y="160" class="lbl" data-a="0:o0,y0|0.3:o0,y0|0.330:o1,y0">RAG CONTEXT</text><g transform="translate(330,330)"><g><circle class="socket" r="68.3"/><g class="fallback-core"><circle r="56"/><circle r="34.7"/><circle r="15.7"/></g><circle class="anchor" r="56" data-act="0 1"/></g></g><g transform="translate(480,265)"><g><g class="node on"><rect x="-60.0" y="-20.0" width="120" height="40" rx="9"/><text y="5">CLASSIFY</text></g></g></g><g transform="translate(480,395)"><g><g class="node on"><rect x="-60.0" y="-20.0" width="120" height="40" rx="9"/><text y="5">EXTRACT</text></g></g></g><text x="480" y="336" class="lbl" style="font-size:18px">+</text><g transform="translate(605,330)"><g><g class="node on"><rect x="-39.0" y="-20.0" width="78" height="40" rx="9"/><text y="5">JSON</text></g></g></g><g transform="translate(705,330)"><g><g class="node on"><rect x="-41.0" y="-20.0" width="82" height="40" rx="9"/><text y="5">N8N</text></g></g></g><g transform="translate(805,330)"><g><g class="node on"><rect x="-52.0" y="-20.0" width="104" height="40" rx="9"/><text y="5">ROUTING</text></g></g></g><g transform="translate(935,200)"><g><g class="node am on"><rect x="-55.0" y="-20.0" width="110" height="40" rx="9"/><text y="5">SUPPORT</text></g></g></g><g transform="translate(935,330)"><g><g class="node mi on"><rect x="-55.0" y="-20.0" width="110" height="40" rx="9"/><text y="5">SALES</text></g></g></g><g transform="translate(935,460)"><g><g class="node vi on"><rect x="-55.0" y="-20.0" width="110" height="40" rx="9"/><text y="5">HUMAN</text></g></g></g><g data-loop="fa 6.5 0"><circle r="5" class="pkt am"/></g><g data-loop="fa 6.5 0.34"><circle r="5" class="pkt am"/></g><g data-loop="fa 6.5 0.67"><circle r="5" class="pkt am"/></g><g data-loop="fb 7 0.15"><circle r="5" class="pkt mi"/></g><g data-loop="fb 7 0.6"><circle r="5" class="pkt mi"/></g><g data-loop="fc 8 0.45"><circle r="5" class="pkt vi"/></g><g data-loop="fr 2.6 0"><circle r="4" class="pkt "/></g><g data-loop="fr 2.6 0.5"><circle r="4" class="pkt "/></g></g></svg><div class="cap"><p data-a="0:o1,y0|0.3:o1,y0|0.340:o0,y-1.5">ALEJAMOS LA CÁMARA.</p><p data-a="0:o0,y1.5|0.38:o0,y1.5|0.420:o1,y0">CADA PUNTO ES UN MENSAJE VIAJANDO POR EL SISTEMA COMPLETO.</p></div></div></section><section class="scene " id="s19" data-len="260" data-beats="0 .44 .8 1" data-title="Final" style="--len:260"><div class="stage"><h2 class="sr">19. Final</h2><svg class="viz" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path id="fin" class="track faint" d="M100,110 L900,110" data-draw=".02 .08"/><g class="fstop" data-hit="fin .06 .44"><circle cx="100" cy="110" r="9"/><text x="100" y="148">MESSAGE</text></g><g class="fstop" data-hit="fin .06 .44"><circle cx="300" cy="110" r="9"/><text x="300" y="148">UNDERSTANDING</text></g><g class="fstop" data-hit="fin .06 .44"><circle cx="500" cy="110" r="9"/><text x="500" y="148">STRUCTURE</text></g><g class="fstop" data-hit="fin .06 .44"><circle cx="700" cy="110" r="9"/><text x="700" y="148">DECISION</text></g><g class="fstop" data-hit="fin .06 .44"><circle cx="900" cy="110" r="9"/><text x="900" y="148">ACTION</text></g><g data-ride="fin 0.06 0.44 k"><circle r="7" class="pkt "/></g><text x="500" y="254" class="dsp" style="font-size:54px" data-a="0:o0,y16|0.46:o0,y16|0.510:o1,y0">LLMs</text><text x="500" y="316" class="dsp" style="font-size:54px" data-a="0:o0,y16|0.49:o0,y16|0.540:o1,y0">Y PROMPTING</text><text x="500" y="378" class="dsp cy" style="font-size:54px" data-a="0:o0,y16|0.52:o0,y16|0.570:o1,y0">EFECTIVO II</text><text x="500" y="470" class="finp cyt" data-a="0:o0,y10|0.62:o0,y10|0.670:o1,y0">LA IA ENTIENDE.</text><text x="500" y="508" class="finp " data-a="0:o0,y10|0.6799999999999999:o0,y10|0.730:o1,y0">LA ESTRUCTURA CONECTA.</text><text x="500" y="546" class="finp st-mi" data-a="0:o0,y10|0.74:o0,y10|0.790:o1,y0">LA AUTOMATIZACIÓN ACTÚA.</text><text x="500" y="604" class="lbl" style="font-size:13px" data-a="0:o0,y0|0.84:o0,y0|0.880:o1,y0">TOP LEARNING  ·  E1577</text></svg></div></section>
 </main>
+
+<section id="clase" class="clase" aria-labelledby="c-title">
+
+<div class="c-wrap c-hero">
+  <div class="c-hero-grid">
+    <div class="c-rv">
+      <p class="c-eyebrow">Guía de clase · Grupo E1577</p>
+      <h2 class="c-h1" id="c-title">LLMs y Prompting Efectivo II</h2>
+      <p class="c-sub">De lenguaje humano a decisiones automatizadas. Todo lo que vemos hoy, explicado paso a paso.</p>
+      <ul class="c-meta">
+        <li>Nivel 2 · Semana 7</li>
+        <li>Módulo 4 · IA Aplicada</li>
+        <li>Miércoles 30 de septiembre de 2026</li>
+        <li>20:30 – 22:00</li>
+      </ul>
+      <div class="c-cta">
+        <a class="c-btn" href="#c-objetivo">Empezar la guía</a>
+        <a class="c-btn ghost" href="#c-lab">Ir al laboratorio</a>
+      </div>
+    </div>
+    <div class="c-prism-stage" aria-hidden="true">
+      <div class="c-prism">
+        <span class="c-cap"></span>
+        <span class="c-face" style="--i:0"><span class="c-face-n">01</span><span class="c-face-t">Mensaje</span><span class="c-face-d">lenguaje humano</span></span>
+        <span class="c-face" style="--i:1"><span class="c-face-n">02</span><span class="c-face-t">LLM</span><span class="c-face-d">interpreta el texto</span></span>
+        <span class="c-face" style="--i:2"><span class="c-face-n">03</span><span class="c-face-t">Datos</span><span class="c-face-d">estructura JSON</span></span>
+        <span class="c-face" style="--i:3"><span class="c-face-n">04</span><span class="c-face-t">Lógica</span><span class="c-face-d">reglas en un Switch</span></span>
+        <span class="c-face" style="--i:4"><span class="c-face-n">05</span><span class="c-face-t">Acción</span><span class="c-face-d">responder o escalar</span></span>
+      </div>
+      <p class="c-prism-cap">Mensaje · LLM · Datos · Lógica · Acción</p>
+    </div>
+  </div>
+</div>
+
+<nav class="c-toc" aria-label="Índice de la guía">
+  <div class="c-wrap c-toc-in">
+    <a class="c-toc-brand" href="#clase">E1577 <span>· Guía</span></a>
+    <ul class="c-toc-list">
+      <li><a href="#c-objetivo"><b>01</b>Objetivo</a></li>
+      <li><a href="#c-lunes"><b>02</b>Del lunes</a></li>
+      <li><a href="#c-claude"><b>03</b>Claude Code</a></li>
+      <li><a href="#c-clasificar"><b>04</b>Clasificar</a></li>
+      <li><a href="#c-lab"><b>05</b>Lab n8n</a></li>
+      <li><a href="#c-faltan"><b>06</b>Faltantes</a></li>
+      <li><a href="#c-turno"><b>07</b>Tu turno</a></li>
+      <li><a href="#c-rag"><b>08</b>RAG</a></li>
+      <li><a href="#c-eval"><b>09</b>Evaluación</a></li>
+      <li><a href="#c-cierre"><b>10</b>Cierre</a></li>
+    </ul>
+  </div>
+  <span class="c-toc-bar" aria-hidden="true"></span>
+</nav>
+
+<div class="c-wrap">
+
+<!-- 01 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-objetivo" aria-labelledby="c-objetivo-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">01 · OBJETIVO Y AGENDA</span>
+    <h3 class="c-h2" id="c-objetivo-h">¿Qué vas a poder hacer al terminar?</h3>
+    <p class="c-lead">Leer el mensaje de un cliente, entender qué quiere, sacar los datos importantes en una estructura ordenada y usar esa estructura en n8n para decidir qué hacer después.</p>
+  </header>
+  <div class="c-grid-2">
+    <div class="c-card c-rv">
+      <h4 class="c-h3">Lo lograste si…</h4>
+      <p class="c-p">procesas correctamente <strong>3 mensajes distintos</strong> e identificas en cada uno:</p>
+      <ul class="c-checks">
+        <li>la intención principal;</li>
+        <li>la intención secundaria, si existe;</li>
+        <li>los datos del cliente;</li>
+        <li>los datos que faltan;</li>
+        <li>si necesita o no a una persona.</li>
+      </ul>
+    </div>
+    <div class="c-card c-rv">
+      <h4 class="c-h3">Y puedes explicar este camino</h4>
+      <ol class="c-path">
+        <li><b>Lenguaje humano</b><small>El cliente escribe como habla: todo junto.</small></li>
+        <li><b>LLM</b><small>El modelo interpreta el mensaje siguiendo un prompt.</small></li>
+        <li><b>Datos estructurados</b><small>Sale un JSON con campos fijos.</small></li>
+        <li><b>Lógica</b><small>Reglas (por ejemplo, un Switch) leen esos campos.</small></li>
+        <li><b>Acción</b><small>Se crea un ticket, una cotización o se escala a una persona.</small></li>
+      </ol>
+    </div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">Agenda de hoy</h4>
+  <ol class="c-agenda c-rv">
+    <li><a href="#c-lunes"><time>20:30 – 20:40</time><span class="t">Apertura y conexión con el lunes</span><span class="d">10 min</span></a></li>
+    <li class="hl"><a href="#c-claude"><time>20:40 – 21:10</time><span class="t">Claude Code aplicado</span><span class="d">30 min</span></a></li>
+    <li><a href="#c-clasificar"><time>21:10 – 21:18</time><span class="t">Clasificar vs. extraer</span><span class="d">8 min</span></a></li>
+    <li class="hl"><a href="#c-lab"><time>21:18 – 21:40</time><span class="t">Lab n8n: mensaje → LLM → JSON → decisión</span><span class="d">22 min</span></a></li>
+    <li><a href="#c-faltan"><time>21:40 – 21:45</time><span class="t">Pruebas y errores</span><span class="d">5 min</span></a></li>
+    <li><a href="#c-rag"><time>21:45 – 21:50</time><span class="t">Introducción a RAG</span><span class="d">5 min</span></a></li>
+    <li><a href="#c-eval"><time>21:50 – 21:58</time><span class="t">Evaluación</span><span class="d">8 min</span></a></li>
+    <li><a href="#c-cierre"><time>21:58 – 22:00</time><span class="t">Cierre</span><span class="d">2 min</span></a></li>
+  </ol>
+</section>
+
+<!-- 02 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-lunes" aria-labelledby="c-lunes-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">02 · DEL LUNES A HOY</span>
+    <h3 class="c-h2" id="c-lunes-h">El lunes lo desarmamos. Hoy lo ponemos a trabajar.</h3>
+    <p class="c-lead">El lunes vimos cómo está construido un agente: modelo, System Prompt, memoria, contexto, tools, skills, guardrails y loop. Hoy no repetimos esa anatomía: la usamos en casos reales.</p>
+  </header>
+  <div class="c-grid-2">
+    <div class="c-card c-rv">
+      <span class="c-lbl">Lunes</span>
+      <p class="c-big">¿Cómo está construido un agente?</p>
+      <p class="c-p">Sus piezas y cómo se conectan.</p>
+    </div>
+    <div class="c-card hl c-rv">
+      <span class="c-lbl">Hoy</span>
+      <p class="c-big">¿Cómo usa la información para actuar?</p>
+      <p class="c-p">Del mensaje de un cliente a una decisión dentro de un workflow.</p>
+    </div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">Cinco conceptos que usamos hoy</h4>
+  <div class="c-grid-5">
+    <div class="c-card c-concept c-rv"><b>Modelo</b><span>Interpreta el mensaje.</span></div>
+    <div class="c-card c-concept c-rv"><b>Prompt</b><span>Especifica qué debe buscar.</span></div>
+    <div class="c-card c-concept c-rv"><b>Clasificación</b><span>Decide qué tipo de solicitud es.</span></div>
+    <div class="c-card c-concept c-rv"><b>Extracción</b><span>Obtiene datos concretos del texto.</span></div>
+    <div class="c-card c-concept c-rv"><b>Structured Output</b><span>Convierte lenguaje natural en información que un software puede usar.</span></div>
+  </div>
+
+  <p class="c-key c-rv">Un prompt para conversar y un prompt para automatizar no buscan la misma salida.</p>
+  <div class="c-grid-2 c-mt">
+    <div class="c-card c-rv">
+      <span class="c-lbl">Para conversar</span>
+      <p class="c-p" style="color:var(--c-tx)">“Carlos tiene un problema con su pedido 18492: le llegaron dos laptops dañadas. Además quiere cotizar 20 más para su oficina.”</p>
+      <p class="c-note">Perfecto para una persona. Difícil de usar para un programa.</p>
+    </div>
+    <div class="c-card c-rv">
+      <span class="c-lbl">Para automatizar</span>
+      <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "soporte",
+  "intencion_secundaria": "ventas",
+  "numero_pedido": "18492"
+}</code></pre></div>
+      <p class="c-note">Cada dato en su campo. n8n puede leerlo y decidir.</p>
+    </div>
+  </div>
+
+  <details class="c-det c-mt c-rv">
+    <summary>Para arrancar: si Carlos escribe que su pedido llegó dañado, pero además quiere comprar 20 productos más, ¿cuántas necesidades tiene?</summary>
+    <div class="c-det-b"><p>Por lo menos <strong>dos</strong>: <strong>soporte</strong> (el pedido llegó dañado) y <strong>ventas</strong> (quiere comprar más). Hoy vamos a lograr que un modelo detecte eso automáticamente.</p></div>
+  </details>
+</section>
+
+<!-- 03 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-claude" aria-labelledby="c-claude-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">03 · CLAUDE CODE APLICADO · 30 MIN</span>
+    <h3 class="c-h2" id="c-claude-h">Claude Code: un agente trabajando en un proyecto real</h3>
+    <p class="c-lead">No es “un ChatGPT que escribe código”. Es un agente especializado: recibe un objetivo, revisa el contexto, decide qué herramienta necesita, actúa, comprueba el resultado y continúa. Fíjate menos en <em>lo que genera</em> y más en <em>cómo trabaja</em>.</p>
+  </header>
+
+  <h4 class="c-sub-h c-rv"><span>3.1</span>Primero, conocer el proyecto</h4>
+  <div class="c-grid-2">
+    <div class="c-rv">
+      <p class="c-p">Antes de ejecutar, Claude necesita conocer el proyecto. Por eso lo primero que hace es inspeccionar los archivos. Usamos un proyecto pequeño: una página sencilla de atención al cliente.</p>
+    </div>
+    <ul class="c-tree c-rv" aria-label="Estructura del proyecto">
+      <li><span class="nm">novashop-demo/</span></li>
+      <li class="f"><span class="nm">index.html</span><span class="cm">la página</span></li>
+      <li class="f"><span class="nm">styles.css</span><span class="cm">los estilos</span></li>
+      <li class="f"><span class="nm">app.js</span><span class="cm">la lógica del formulario</span></li>
+    </ul>
+  </div>
+
+  <h4 class="c-sub-h c-rv"><span>3.2</span>Plan Mode y permisos</h4>
+  <p class="c-p c-rv">Un agente que puede editar archivos y ejecutar comandos necesita límites. Claude Code te deja elegir cuánto control quieres tener:</p>
+  <div class="c-modes">
+    <div class="c-mode c-rv">
+      <div><h5>Pedir permiso</h5><span class="c-tag mi">Para aprender</span></div>
+      <p>Claude te pide autorización antes de editar archivos o ejecutar comandos. Ves y apruebas cada paso.</p>
+    </div>
+    <div class="c-mode c-rv">
+      <div><h5>Plan Mode</h5><span class="c-tag acc">Tareas complejas</span></div>
+      <p>Primero investiga y te propone un plan. No cambia nada hasta que tú lo apruebas.</p>
+    </div>
+    <div class="c-mode c-rv">
+      <div><h5>Omitir permisos</h5><span class="c-tag rd">Solo entornos aislados</span></div>
+      <p>Ejecuta todo sin preguntar. Solo tiene sentido en un contenedor o una máquina virtual, nunca en tu computadora con archivos importantes.</p>
+    </div>
+  </div>
+  <div class="c-callout c-rv"><p><strong>Para aprender y en proyectos importantes, no empieces saltándote los permisos.</strong> Primero mira qué planea hacer.</p></div>
+
+  <h4 class="c-sub-h c-rv"><span>3.3</span>CLAUDE.md vs. Skill</h4>
+  <div class="c-grid-2">
+    <div class="c-card c-rv">
+      <h5 class="c-h3">CLAUDE.md</h5>
+      <p class="c-p">Las <strong>reglas permanentes del proyecto</strong>. Es un archivo en la carpeta del proyecto y Claude lo tiene en cuenta cada vez que trabaja ahí.</p>
+      <span class="c-tag dim">Siempre activo</span>
+    </div>
+    <div class="c-card c-rv">
+      <h5 class="c-h3">Skill</h5>
+      <p class="c-p">Un <strong>procedimiento reutilizable</strong>: instrucciones, conocimiento o un flujo de trabajo que Claude carga solo cuando la tarea lo necesita.</p>
+      <span class="c-tag dim">Se carga cuando hace falta</span>
+    </div>
+  </div>
+  <div class="c-code c-mt c-rv">
+    <div class="c-code-h"><span>Ejemplo · CLAUDE.md</span><button type="button" class="c-copy">Copiar</button></div>
+<pre><code>Proyecto NovaShop.
+
+Reglas:
+- Todo texto visible debe estar en español.
+- Mantén HTML/CSS/JS separados.
+- Antes de terminar, prueba la interfaz.
+- No elimines archivos sin aprobación.</code></pre>
+  </div>
+
+  <h4 class="c-sub-h c-rv"><span>3.4</span>El loop en acción</h4>
+  <p class="c-p c-rv">Esta es la instrucción que le damos. Fíjate en que le pedimos un plan <em>antes</em> de tocar nada y que no termine hasta comprobar que funciona:</p>
+  <div class="c-code c-rv">
+    <div class="c-code-h"><span>Prompt de la demo</span><button type="button" class="c-copy">Copiar</button></div>
+<pre><code>Inspecciona este proyecto. El formulario debería impedir que se
+envíe si el correo no es válido. Primero revisa los archivos y
+explícame tu plan. Después corrige el problema, verifica el
+comportamiento y no des por terminada la tarea hasta comprobar
+que funciona.</code></pre>
+  </div>
+  <ol class="c-loop c-mt c-rv" aria-label="Ciclo de trabajo del agente">
+    <li style="--i:0"><small>1</small>Inspeccionar</li>
+    <li style="--i:1"><small>2</small>Planear</li>
+    <li style="--i:2"><small>3</small>Modificar</li>
+    <li style="--i:3"><small>4</small>Probar</li>
+    <li style="--i:4"><small>5</small>Observar</li>
+    <li style="--i:5"><small>6</small>Corregir</li>
+  </ol>
+  <p class="c-loop-back c-rv">Si algo falla, vuelve al inicio del ciclo hasta que funciona.</p>
+
+  <p class="c-p c-mt c-rv">Mientras trabaja, identifica las piezas del agente. Toca cada tarjeta para ver la respuesta:</p>
+  <div class="c-flips">
+    <button type="button" class="c-flip c-rv" aria-pressed="false"><span class="c-flip-in">
+      <span class="c-flip-f"><small>Pregunta</small><b>¿Contexto?</b><small>Toca para girar</small></span>
+      <span class="c-flip-b"><small>Contexto</small>Los archivos del proyecto: index.html, styles.css y app.js.</span>
+    </span></button>
+    <button type="button" class="c-flip c-rv" aria-pressed="false"><span class="c-flip-in">
+      <span class="c-flip-f"><small>Pregunta</small><b>¿Objetivo?</b><small>Toca para girar</small></span>
+      <span class="c-flip-b"><small>Objetivo</small>Corregir la validación del correo en el formulario.</span>
+    </span></button>
+    <button type="button" class="c-flip c-rv" aria-pressed="false"><span class="c-flip-in">
+      <span class="c-flip-f"><small>Pregunta</small><b>¿Tools?</b><small>Toca para girar</small></span>
+      <span class="c-flip-b"><small>Tools</small>Leer y editar archivos, y ejecutar comandos en la terminal.</span>
+    </span></button>
+    <button type="button" class="c-flip c-rv" aria-pressed="false"><span class="c-flip-in">
+      <span class="c-flip-f"><small>Pregunta</small><b>¿Loop?</b><small>Toca para girar</small></span>
+      <span class="c-flip-b"><small>Loop</small>Inspecciona, planea, modifica, prueba, observa y corrige hasta que funciona.</span>
+    </span></button>
+  </div>
+
+  <details class="c-det c-mt c-rv">
+    <summary>¿Por qué esto sí se parece al agente que vimos el lunes?</summary>
+    <div class="c-det-b"><p>Porque no produjo una sola respuesta: <strong>inspeccionó un entorno, actuó sobre él y verificó el resultado</strong>. Lo importante de la demo no es la página final, es ver ese proceso.</p></div>
+  </details>
+</section>
+
+<!-- 04 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-clasificar" aria-labelledby="c-clasificar-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">04 · CLASIFICAR Y EXTRAER</span>
+    <h3 class="c-h2" id="c-clasificar-h">Clasificar no es lo mismo que extraer</h3>
+    <p class="c-lead">Son dos tareas distintas que el modelo hace sobre el mismo mensaje. Una responde <strong>qué quiere</strong> la persona; la otra, <strong>qué datos dio</strong>.</p>
+  </header>
+  <div class="c-grid-2">
+    <div class="c-card c-rv">
+      <span class="c-lbl">Clasificar</span>
+      <p class="c-big">¿Qué quiere?</p>
+      <p class="c-p">Decide a qué categoría pertenece el mensaje.</p>
+      <div class="c-tags"><span class="c-tag am">soporte</span><span class="c-tag mi">ventas</span><span class="c-tag acc">facturacion</span><span class="c-tag dim">seguimiento</span><span class="c-tag dim">otro</span></div>
+    </div>
+    <div class="c-card c-rv">
+      <span class="c-lbl">Extraer</span>
+      <p class="c-big">¿Qué datos dijo?</p>
+      <p class="c-p">Saca datos concretos del texto, cada uno en su campo.</p>
+      <div class="c-tags"><span class="c-tag dim">nombre_cliente</span><span class="c-tag dim">numero_pedido</span><span class="c-tag dim">producto</span><span class="c-tag dim">cantidades</span><span class="c-tag dim">problema</span></div>
+    </div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">Caso NovaShop</h4>
+  <div class="c-card c-rv">
+    <p class="c-msg">“Hola, soy <mark>Carlos Mendoza</mark>. Mi pedido <mark>18492</mark> <span class="in-am">llegó con <mark>dos</mark> <mark>laptops</mark> <mark>dañadas</mark></span> y además <span class="in-mi">necesito cotizar <mark>otras 20</mark></span> para nuestra oficina.”</p>
+    <ul class="c-legend">
+      <li><i class="l1"></i>dato extraído</li>
+      <li><i class="l2"></i>intención: soporte</li>
+      <li><i class="l3"></i>intención: ventas</li>
+    </ul>
+  </div>
+  <div class="c-grid-2 c-mt">
+    <div class="c-card c-rv">
+      <span class="c-lbl">Resultado de clasificar</span>
+      <div class="c-intent">
+        <div><span class="c-tag am">soporte</span><q>llegó con dos laptops dañadas</q></div>
+        <div><span class="c-tag mi">ventas</span><q>necesito cotizar otras 20</q></div>
+      </div>
+      <p class="c-note">Un mismo mensaje puede tener una intención principal y una secundaria.</p>
+    </div>
+    <div class="c-card c-rv">
+      <span class="c-lbl">Resultado de extraer</span>
+      <dl class="c-kv">
+        <dt>nombre_cliente</dt><dd>"Carlos Mendoza"</dd>
+        <dt>numero_pedido</dt><dd>"18492"</dd>
+        <dt>producto</dt><dd>"laptop"</dd>
+        <dt>cantidad_afectada</dt><dd>2</dd>
+        <dt>cantidad_solicitada</dt><dd>20</dd>
+        <dt>problema</dt><dd>"producto_danado"</dd>
+      </dl>
+      <p class="c-note">“dos” se convierte en el número 2. El pedido va entre comillas porque es un identificador, no una cantidad.</p>
+    </div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">De lenguaje a estructura</h4>
+  <div class="c-stack-wrap">
+    <div class="c-stack-scene" aria-hidden="true">
+      <div class="c-stack">
+        <div class="c-layer l1"><span class="lt">JSON</span><span class="c-cells"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        <div class="c-layer l2"><span class="lt">LLM</span><span class="c-orb"></span></div>
+        <div class="c-layer l3"><span class="lt">TEXTO</span><span class="c-lines"><i></i><i></i><i></i><i></i></span></div>
+      </div>
+    </div>
+    <ol class="c-path">
+      <li><b>Lenguaje natural</b><small>Carlos escribe como escribe una persona: todo junto, sin orden.</small></li>
+      <li><b>LLM + prompt</b><small>El modelo interpreta el texto siguiendo tus instrucciones.</small></li>
+      <li><b>Datos estructurados</b><small>Sale un objeto con campos fijos que otro sistema puede leer.</small></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 05 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-lab" aria-labelledby="c-lab-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">05 · LABORATORIO N8N</span>
+    <h3 class="c-h2" id="c-lab-h">Construye el workflow: mensaje → LLM → JSON → decisión</h3>
+    <p class="c-lead">Vamos a construir un workflow que recibe un mensaje y devuelve datos estructurados. Después, un Switch usa esos datos para decidir a dónde va cada caso.</p>
+  </header>
+
+  <div class="c-wf c-rv" role="img" aria-label="Workflow: Manual Trigger, Edit Fields, Basic LLM Chain con Chat Model y Structured Output Parser, Switch y salidas Soporte, Ventas, Facturación, Seguimiento y Humano">
+    <div class="c-n"><span class="ic">RUN</span><b>Manual Trigger</b><small>inicia la prueba</small></div>
+    <span class="c-arr"></span>
+    <div class="c-n"><span class="ic">SET</span><b>Edit Fields</b><small>campo “mensaje”</small></div>
+    <span class="c-arr"></span>
+    <div class="c-n ai"><span class="ic">LLM</span><b>Basic LLM Chain</b><small>tu prompt</small><span class="c-subs"><span>Chat Model</span><span>Structured Output Parser</span></span></div>
+    <span class="c-arr"></span>
+    <div class="c-n"><span class="ic">IF</span><b>Switch</b><small>lee intencion_principal</small></div>
+    <span class="c-arr"></span>
+    <div class="c-outs"><span class="c-out am">Soporte</span><span class="c-out mi">Ventas</span><span class="c-out acc">Facturación</span><span class="c-out dim">Seguimiento</span><span class="c-out vi">Humano</span></div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">Paso a paso</h4>
+  <ol class="c-steps">
+    <li class="c-rv"><div><b>Manual Trigger</b><p>Te permite ejecutar el workflow a mano mientras pruebas.</p></div></li>
+    <li class="c-rv"><div><b>Edit Fields</b><p>Crea un campo llamado <code>mensaje</code> (tipo texto) y pega ahí el mensaje del cliente.</p></div></li>
+    <li class="c-rv"><div><b>Basic LLM Chain</b><p>Pega el prompt de abajo. Al final lleva el mensaje con la expresión <code>{{ $json.mensaje }}</code>. Activa <em>Require Specific Output Format</em> para conectar el parser.</p></div></li>
+    <li class="c-rv"><div><b>Chat Model</b><p>Conéctalo a la entrada <em>Model</em> del Basic LLM Chain. Usa la credencial que ya está configurada para la clase.</p></div></li>
+    <li class="c-rv"><div><b>Structured Output Parser</b><p>Conéctalo a la entrada <em>Output Parser</em>. Genera el esquema a partir de un ejemplo JSON y pega la salida esperada.</p></div></li>
+    <li class="c-rv"><div><b>Switch</b><p>Crea una salida por intención comparando <code>{{ $json.output.intencion_principal }}</code> con <code>soporte</code>, <code>ventas</code>, <code>facturacion</code> y <code>seguimiento</code>. Agrega otra para cuando <code>requiere_humano</code> sea <code>true</code>.</p></div></li>
+  </ol>
+  <div class="c-callout warn c-rv"><p><strong>Nunca muestres, copies ni compartas una API key</strong> en pantalla, en el chat de la clase o en capturas.</p></div>
+
+  <h4 class="c-sub-h c-rv">Material para copiar</h4>
+  <div class="c-codes">
+    <div class="c-code c-rv">
+      <div class="c-code-h"><span>Mensaje del cliente</span><button type="button" class="c-copy">Copiar</button></div>
+<pre><code>Hola, soy Carlos Mendoza.
+
+Mi pedido 18492 llegó con dos laptops dañadas
+y además necesito cotizar otras 20 para nuestra oficina.</code></pre>
+    </div>
+    <div class="c-code c-rv">
+      <div class="c-code-h"><span>Salida esperada</span><button type="button" class="c-copy">Copiar</button></div>
+<pre><code class="c-json">{
+  "intencion_principal": "soporte",
+  "intencion_secundaria": "ventas",
+  "nombre_cliente": "Carlos Mendoza",
+  "numero_pedido": "18492",
+  "producto": "laptop",
+  "cantidad_afectada": 2,
+  "cantidad_solicitada": 20,
+  "problema": "producto_danado",
+  "requiere_humano": false
+}</code></pre>
+    </div>
+    <div class="c-code full c-rv">
+      <div class="c-code-h"><span>Prompt · Basic LLM Chain</span><button type="button" class="c-copy">Copiar</button></div>
+<pre><code>Eres un sistema de clasificación y extracción
+de información para atención a clientes de NovaShop.
+
+Analiza el mensaje recibido.
+
+TAREAS
+
+1. Identifica la intención principal entre:
+- soporte
+- ventas
+- facturacion
+- seguimiento
+- otro
+
+2. Si existe otra intención, identifícala
+como intención secundaria.
+
+3. Extrae cuando exista:
+- nombre_cliente
+- numero_pedido
+- producto
+- cantidad_afectada
+- cantidad_solicitada
+- problema
+
+4. Determina si requiere intervención humana.
+
+REGLAS
+
+- No inventes información.
+- Si un dato no está disponible, utiliza null.
+- No deduzcas números de pedido.
+- La intención secundaria puede ser null.
+- Devuelve exclusivamente la estructura solicitada.
+
+MENSAJE DEL CLIENTE:
+{{ $json.mensaje }}</code></pre>
+    </div>
+  </div>
+
+  <div class="c-grid-2 c-mt">
+    <div class="c-card c-rv">
+      <h4 class="c-h3">Tu workflow está bien si…</h4>
+      <ul class="c-checks">
+        <li>la intención es correcta;</li>
+        <li>los datos extraídos son correctos;</li>
+        <li>los datos que no existen quedan en <code>null</code>;</li>
+        <li>la estructura es siempre la misma;</li>
+        <li>no inventa datos.</li>
+      </ul>
+    </div>
+    <div class="c-grid-2" style="grid-template-columns:minmax(0,1fr)">
+      <div class="c-card c-rv">
+        <h4 class="c-h3">¿Y la intención secundaria?</h4>
+        <p class="c-p">Carlos también quiere comprar. Para atender las dos cosas, agrega reglas sobre <code>intencion_secundaria</code> y activa la opción del Switch para enviar a <em>todas</em> las salidas que coincidan.</p>
+      </div>
+      <div class="c-card c-rv">
+        <h4 class="c-h3">Plan B</h4>
+        <p class="c-p">Si n8n o el modelo fallan, pega el mismo prompt en un chatbot (con el mensaje en lugar de <code>{{ $json.mensaje }}</code>) y obtén el JSON. La lógica es la misma: JSON → Switch → acción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-faltan" aria-labelledby="c-faltan-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">06 · CUANDO LA IA NO SABE</span>
+    <h3 class="c-h2" id="c-faltan-h">Si un dato no está, no se inventa</h3>
+    <p class="c-lead">Un modelo siempre intenta dar una respuesta. En una automatización eso es peligroso: un número de pedido inventado puede mandar un reembolso o un ticket al cliente equivocado.</p>
+  </header>
+  <ol class="c-trio">
+    <li class="c-rv"><b>No inventar</b><span>El prompt lo dice explícitamente.</span></li>
+    <li class="c-rv"><b>null</b><span>El campo existe, pero va vacío: dato faltante.</span></li>
+    <li class="c-rv"><b>Preguntar o escalar</b><span>El workflow pide el dato o pasa el caso a una persona.</span></li>
+  </ol>
+
+  <h4 class="c-sub-h c-rv">Ejemplo</h4>
+  <div class="c-card c-rv"><p class="c-msg" style="font-size:clamp(18px,2vw,21px)">“Hola, me llegaron dos laptops con la pantalla rota. ¿Qué hago?”</p></div>
+  <div class="c-grid-2 c-mt">
+    <div class="c-rv">
+      <p class="c-verdict no"><i></i>Incorrecto</p>
+      <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "soporte",
+  "producto": "laptop",
+  "cantidad_afectada": 2,
+  "numero_pedido": "18492"
+}</code></pre></div>
+      <p class="c-note">El número de pedido es inventado: el cliente nunca lo escribió.</p>
+    </div>
+    <div class="c-rv">
+      <p class="c-verdict ok"><i></i>Correcto</p>
+      <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "soporte",
+  "producto": "laptop",
+  "cantidad_afectada": 2,
+  "numero_pedido": null
+}</code></pre></div>
+      <p class="c-note">Siguiente acción: responderle pidiendo su número de pedido.</p>
+    </div>
+  </div>
+
+  <h4 class="c-sub-h c-rv">Reto avanzado</h4>
+  <div class="c-grid-2">
+    <div class="c-rv">
+      <p class="c-p">Agrega estos campos al prompt y al parser. Así el propio JSON dice qué falta, qué tan seguro está el modelo y si hay que escalar:</p>
+      <div class="c-code"><pre><code class="c-json">"datos_faltantes": [],
+"confianza": 0.0,
+"requiere_humano": false</code></pre></div>
+    </div>
+    <details class="c-det c-rv" style="align-self:start">
+      <summary>¿Cuándo debería escalar a una persona?</summary>
+      <div class="c-det-b"><p>Algunas ideas para discutir: cuando el cliente está muy molesto o amenaza con una queja, cuando la confianza es baja, cuando faltan datos que no se pueden pedir automáticamente o cuando hay dinero de por medio y el caso no está claro.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 07 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-turno" aria-labelledby="c-turno-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">07 · TU TURNO</span>
+    <h3 class="c-h2" id="c-turno-h">Procesa estos 3 mensajes</h3>
+    <p class="c-lead">En cada uno identifica: intención principal, intención secundaria, datos del cliente, datos faltantes y si necesita a una persona. Después compara con la solución.</p>
+  </header>
+  <div class="c-tasks">
+    <div class="c-card c-task c-rv">
+      <div><span class="c-lbl">Mensaje 1</span>
+      <blockquote>“Buenas tardes, soy Ana Torres. Me cobraron dos veces el pedido 30118.”</blockquote></div>
+      <details class="c-det">
+        <summary>Ver solución</summary>
+        <div class="c-det-b c-sol">
+          <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "facturacion",
+  "intencion_secundaria": null,
+  "nombre_cliente": "Ana Torres",
+  "numero_pedido": "30118",
+  "producto": null,
+  "cantidad_afectada": null,
+  "cantidad_solicitada": null,
+  "problema": "cobro_duplicado",
+  "requiere_humano": false
+}</code></pre></div>
+          <dl><dt>Faltan</dt><dd>producto (no hace falta para este caso)</dd><dt>Ruta</dt><dd>Switch → Facturación</dd></dl>
+        </div>
+      </details>
+    </div>
+    <div class="c-card c-task c-rv">
+      <div><span class="c-lbl">Mensaje 2</span>
+      <blockquote>“¿Dónde va mi pedido 22750? Lo necesito antes del viernes. Si llega a tiempo, quiero pedir 3 más.”</blockquote></div>
+      <details class="c-det">
+        <summary>Ver solución</summary>
+        <div class="c-det-b c-sol">
+          <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "seguimiento",
+  "intencion_secundaria": "ventas",
+  "nombre_cliente": null,
+  "numero_pedido": "22750",
+  "producto": null,
+  "cantidad_afectada": null,
+  "cantidad_solicitada": 3,
+  "problema": null,
+  "requiere_humano": false
+}</code></pre></div>
+          <dl><dt>Faltan</dt><dd>nombre_cliente y producto: “3 más” no dice de qué, y no se deduce</dd><dt>Ruta</dt><dd>Seguimiento + Ventas</dd></dl>
+        </div>
+      </details>
+    </div>
+    <div class="c-card c-task c-rv">
+      <div><span class="c-lbl">Mensaje 3</span>
+      <blockquote>“Llevo tres semanas esperando mi reembolso y nadie me responde. Si hoy no me contestan, pongo una queja.”</blockquote></div>
+      <details class="c-det">
+        <summary>Ver solución</summary>
+        <div class="c-det-b c-sol">
+          <div class="c-code"><pre><code class="c-json">{
+  "intencion_principal": "facturacion",
+  "intencion_secundaria": null,
+  "nombre_cliente": null,
+  "numero_pedido": null,
+  "producto": null,
+  "cantidad_afectada": null,
+  "cantidad_solicitada": null,
+  "problema": "reembolso_pendiente",
+  "requiere_humano": true
+}</code></pre></div>
+          <dl><dt>Faltan</dt><dd>nombre_cliente y numero_pedido</dd><dt>Ruta</dt><dd>Humano: cliente molesto y sin datos para resolverlo solo</dd></dl>
+          <p class="c-note" style="margin:0">También se acepta <code>soporte</code> como intención. Lo importante es <code>requiere_humano: true</code>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-rag" aria-labelledby="c-rag-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">08 · PRÓXIMA PARADA</span>
+    <h3 class="c-h2" id="c-rag-h">RAG: cuando el modelo necesita información de tu empresa</h3>
+    <p class="c-lead">El modelo sabe mucho en general, pero no conoce las reglas de NovaShop: su política de devoluciones, sus precios o sus horarios. RAG resuelve eso: primero busca la información y después responde con ella.</p>
+  </header>
+  <div class="c-fan-wrap">
+    <div class="c-fan-scene" aria-hidden="true">
+      <div class="c-fan">
+        <div class="c-doc" style="--i:0"><b>FAQ</b><i></i><i></i><i></i><i></i></div>
+        <div class="c-doc" style="--i:1"><b>Catálogo</b><i></i><i></i><i></i><i></i></div>
+        <div class="c-doc key" style="--i:2"><b>Políticas</b><i></i><i></i><i></i><i></i><em>RECUPERADO</em></div>
+        <div class="c-doc" style="--i:3"><b>Pedidos</b><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <ol class="c-path c-rv">
+      <li><b>Pregunta</b><small>El cliente pregunta algo propio de la empresa.</small></li>
+      <li><b>Buscar</b><small>Se busca en los documentos de la empresa.</small></li>
+      <li><b>Recuperar contexto</b><small>Se toma solo el fragmento que sirve.</small></li>
+      <li><b>LLM</b><small>El modelo recibe la pregunta junto con ese fragmento.</small></li>
+      <li><b>Respuesta</b><small>Responde basándose en esa información, no en suposiciones.</small></li>
+    </ol>
+  </div>
+  <div class="c-rag-ex c-rv">
+    <div><span>Pregunta</span><p>“¿Puedo devolver este producto después de 45 días?”</p></div>
+    <div><span>Fragmento recuperado</span><p class="frag">Política de devoluciones: se aceptan devoluciones dentro de los 30 días posteriores a la entrega.</p></div>
+    <div><span>Respuesta</span><p>“No. Según la política de NovaShop, las devoluciones se aceptan hasta 30 días después de la entrega.”</p></div>
+  </div>
+  <p class="c-note c-rv">Ejemplo ficticio. Por ahora quédate con la idea; cómo se busca la información por dentro lo veremos más adelante.</p>
+</section>
+
+<!-- 09 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-eval" aria-labelledby="c-eval-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">09 · AUTOEVALUACIÓN</span>
+    <h3 class="c-h2" id="c-eval-h">Comprueba lo que aprendiste</h3>
+    <p class="c-lead">Piensa tu respuesta y después revísala. Es una práctica: si hay una evaluación publicada en la plataforma, esa es la que cuenta.</p>
+  </header>
+  <details class="c-det c-rv">
+    <summary>1. ¿Cuál es la diferencia entre clasificación y extracción?</summary>
+    <div class="c-det-b"><p>La <strong>clasificación</strong> determina a qué categoría pertenece el mensaje. La <strong>extracción</strong> recupera datos específicos que vienen dentro del mensaje.</p></div>
+  </details>
+  <details class="c-det c-rv">
+    <summary>2. ¿Por qué estructurar la salida?</summary>
+    <div class="c-det-b"><p>Porque un workflow necesita <strong>campos predecibles</strong> para tomar decisiones y enviar información a otros nodos o sistemas.</p></div>
+  </details>
+  <div class="c-card c-quiz c-mt c-rv" data-answer="c">
+    <p class="c-q-n">Pregunta 3</p>
+    <p class="c-q-t">El usuario no proporciona número de pedido. ¿Qué debería hacer el modelo?</p>
+    <div class="c-opts" role="group" aria-label="Opciones de respuesta">
+      <button type="button" class="c-opt" data-v="a" data-fb="No. Un dato inventado puede llevar a una acción equivocada. Intenta otra vez."><b>A</b>Inventarlo.</button>
+      <button type="button" class="c-opt" data-v="b" data-fb="No. Suponer también es inventar: podría ser otra compra. Intenta otra vez."><b>B</b>Suponer el último pedido.</button>
+      <button type="button" class="c-opt" data-v="c" data-fb="¡Correcto! Si el dato no está, se devuelve null y se le pide al cliente (o se escala)."><b>C</b><span>Devolver <code>null</code> o solicitarlo.</span></button>
+      <button type="button" class="c-opt" data-v="d" data-fb="No. El resto del mensaje sigue siendo útil: solo falta un dato. Intenta otra vez."><b>D</b>Ignorar todo el mensaje.</button>
+    </div>
+    <p class="c-fb" aria-live="polite"></p>
+  </div>
+  <details class="c-det c-mt c-rv">
+    <summary>4. ¿Qué problema resuelve RAG?</summary>
+    <div class="c-det-b"><p>Permite <strong>recuperar información relevante de una fuente externa</strong> (por ejemplo, los documentos de la empresa) y dársela al modelo para que responda con base en esa información específica.</p></div>
+  </details>
+  <div class="c-goal c-rv"><b>Meta</b><span>3 de 4 respuestas correctas y tu workflow funcionando.</span></div>
+</section>
+
+<!-- 10 ─────────────────────────────────────────── -->
+<section class="c-ch" id="c-cierre" aria-labelledby="c-cierre-h">
+  <header class="c-ch-head c-rv">
+    <span class="c-num">10 · CIERRE</span>
+    <h3 class="c-final" id="c-cierre-h">Lunes: diseccionamos al agente.<br><span>Miércoles: lo ponemos a trabajar.</span></h3>
+  </header>
+  <div class="c-grid-2">
+    <div class="c-rv">
+      <p class="c-p" style="font-size:19px;color:var(--c-tx)">Esta semana empezamos entendiendo cómo está construido un agente. Hoy vimos cómo esa inteligencia entra a una automatización: recibe lenguaje humano, clasifica lo que la persona quiere, extrae los datos y entrega una estructura que otros sistemas pueden usar.</p>
+      <p class="c-p">Lo que sigue: ¿qué pasa cuando el modelo necesita conocer información específica de nuestra empresa? Ahí entra RAG.</p>
+    </div>
+    <div class="c-card c-rv">
+      <h4 class="c-h3">Antes de irte</h4>
+      <ul class="c-checks">
+        <li>Responde la evaluación en la plataforma.</li>
+        <li>Confirma tu asistencia.</li>
+        <li>Revisa la grabación si te perdiste algo.</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="c-foot">
+    <span>Top Learning · E1577 · Nivel 2 · Módulo 4</span>
+    <nav aria-label="Navegación final"><a href="#clase">Inicio de la guía ↑</a><a href="#s1">Volver a la presentación ↑</a></nav>
+  </footer>
+</section>
+
+</div>
+</section>
 <script>
 /**
  * @license
@@ -556,7 +1591,8 @@ function applyLoops(s,t){
 
 /* ───────── HUD / rail / nav ───────── */
 const hud=$('hudScene'),prog=$('prog');
-const railBtns=[...document.querySelectorAll('.srail button')];
+const railBtns=[...document.querySelectorAll('.srail button[data-go]')];
+const claseEl=$('clase');let inClase=false;
 const TOTAL=scenes.length;
 let curScene=-1;
 function setCur(i){if(i===curScene)return;curScene=i;
@@ -566,6 +1602,7 @@ function setCur(i){if(i===curScene)return;curScene=i;
 function sceneTop(s){return s.el.getBoundingClientRect().top+scrollY;}
 function beatList(){const vh=innerHeight;const arr=[];
   scenes.forEach(s=>{const top=sceneTop(s),L=s.el.offsetHeight-vh;s.beats.forEach(b=>arr.push(Math.round(top+b*L)));});
+  if(claseEl)arr.push(Math.round(claseEl.getBoundingClientRect().top+scrollY));
   return [...new Set(arr)].sort((a,b)=>a-b);}
 let tween=null;
 function goTo(y){y=clamp(y,0,document.documentElement.scrollHeight-innerHeight);
@@ -576,6 +1613,7 @@ function step(dir){const cur=tween?tween.to:scrollY;const b=beatList();
   else{const n=[...b].reverse().find(v=>v<cur-4);goTo(n===undefined?0:n);}}
 addEventListener('keydown',e=>{
   if(e.altKey||e.ctrlKey||e.metaKey)return;
+  if(claseEl&&claseEl.getBoundingClientRect().top<=2)return;
   const tag=(document.activeElement&&document.activeElement.tagName)||'';
   const onBtn=tag==='BUTTON';
   if(['ArrowDown','ArrowRight','PageDown'].includes(e.key)||(e.key===' '&&!onBtn&&!e.shiftKey)){e.preventDefault();step(1);}
@@ -585,6 +1623,8 @@ addEventListener('keydown',e=>{
 });
 ['wheel','touchstart'].forEach(ev=>addEventListener(ev,()=>{tween=null;},{passive:true}));
 railBtns.forEach(b=>b.addEventListener('click',()=>{const s=scenes[+b.dataset.go-1];goTo(sceneTop(s)+ (s.i===0?0:2));}));
+const guideBtn=document.querySelector('.srail button[data-clase]');
+if(guideBtn&&claseEl)guideBtn.addEventListener('click',()=>goTo(claseEl.getBoundingClientRect().top+scrollY));
 
 /* ───────── lab ───────── */
 const CASES=[
@@ -777,6 +1817,8 @@ function frame(now){
   const vh=innerHeight;const sy=scrollY;
   vel+=((sy-lastY)/Math.max(dt,.001)-vel)*.12;lastY=sy;
   const docH=document.documentElement.scrollHeight-vh;prog.style.width=(docH>0?sy/docH*100:0)+'%';
+  const ceTop=claseEl?claseEl.getBoundingClientRect().top:Infinity;
+  const inC=ceTop<64;if(inC!==inClase){inClase=inC;document.body.classList.toggle('in-clase',inC);}
   let best=null,bestOp=-1;
   if(ready){
     const rects=scenes.map(s=>s.el.getBoundingClientRect());
@@ -792,7 +1834,7 @@ function frame(now){
     });
     if(best)setCur(best.i);
   }
-  if(GL){
+  if(GL&&ceTop>0){
     let target=null,top=0;
     if(ready)scenes.forEach(s=>{if(!s.vis||!s.anchor)return;
       let eo=s.op;let n=s.anchor;while(n&&n!==s.stage){const o=n.style&&n.style.opacity;if(o!==''&&o!==undefined)eo*=parseFloat(o);n=n.parentNode;}
@@ -823,5 +1865,89 @@ Promise.race([fontsReady,new Promise(r=>setTimeout(r,2500))]).then(()=>requestAn
 
 </script>
 
+
+<script>
+/* ───────── Guía de clase: copiar, tarjetas, quiz, entradas 3D e índice ───────── */
+(function(){
+'use strict';
+const root=document.getElementById('clase');if(!root)return;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.classList.add('c-js');
+
+/* resaltado de JSON */
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+root.querySelectorAll('code.c-json').forEach(el=>{
+  el.innerHTML=esc(el.textContent).replace(/("(?:[^"\\]|\\.)*")(\s*:)?|\b(true|false)\b|\bnull\b|-?\b\d+(?:\.\d+)?\b/g,(m,str,colon,bool)=>{
+    if(str)return colon?`<span class="cj-k">${str}</span>${colon}`:`<span class="cj-s">${str}</span>`;
+    if(bool)return `<span class="cj-b">${m}</span>`;
+    if(m==='null')return '<span class="cj-null">null</span>';
+    return `<span class="cj-n">${m}</span>`;});
+});
+
+/* copiar */
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);
+  return new Promise((res,rej)=>{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);ta.select();
+    let ok=false;try{ok=document.execCommand('copy');}catch(e){}ta.remove();ok?res():rej();});
+}
+function flash(b,txt,cls){if(!b.dataset.label)b.dataset.label=b.textContent;b.textContent=txt;b.classList.remove('ok','err');b.classList.add(cls);
+  clearTimeout(b._t);b._t=setTimeout(()=>{b.textContent=b.dataset.label;b.classList.remove(cls);},1800);}
+root.querySelectorAll('.c-copy').forEach(b=>b.addEventListener('click',()=>{
+  const pre=b.closest('.c-code').querySelector('pre');
+  copyText(pre.textContent).then(()=>flash(b,'Copiado','ok'),()=>flash(b,'Selecciónalo y copia','err'));
+}));
+
+/* tarjetas que giran */
+root.querySelectorAll('.c-flip').forEach(b=>b.addEventListener('click',()=>{
+  const on=b.classList.toggle('is-flipped');b.setAttribute('aria-pressed',on?'true':'false');
+}));
+
+/* opción múltiple */
+root.querySelectorAll('.c-quiz').forEach(q=>{
+  const fb=q.querySelector('.c-fb'),ans=q.dataset.answer,opts=[...q.querySelectorAll('.c-opt')];
+  opts.forEach(o=>o.addEventListener('click',()=>{
+    const ok=o.dataset.v===ans;
+    opts.forEach(x=>x.classList.remove('is-ok','is-no'));o.classList.add(ok?'is-ok':'is-no');
+    fb.textContent=o.dataset.fb;fb.className='c-fb '+(ok?'ok':'no');
+  }));
+});
+
+/* entradas con inclinación 3D, pila y abanico */
+const targets=root.querySelectorAll('.c-rv,.c-stack-wrap,.c-fan-wrap');
+if(RM||!('IntersectionObserver' in window)){targets.forEach(t=>t.classList.add('is-in'));}
+else{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}}),
+    {rootMargin:'0px 0px -8% 0px',threshold:.05});
+  targets.forEach(t=>io.observe(t));
+}
+
+/* índice: capítulo actual + progreso de lectura */
+const list=root.querySelector('.c-toc-list'),bar=root.querySelector('.c-toc-bar');
+const links=[...root.querySelectorAll('.c-toc-list a')];
+const chs=links.map(a=>document.getElementById(a.getAttribute('href').slice(1)));
+let cur=-2,queued=false;
+function update(){queued=false;
+  const r=root.getBoundingClientRect(),vh=innerHeight;
+  if(r.bottom<0||r.top>vh)return;
+  const span=r.height-vh;bar.style.width=(span>0?Math.min(1,Math.max(0,-r.top/span))*100:0).toFixed(2)+'%';
+  let i=-1;chs.forEach((c,k)=>{if(c&&c.getBoundingClientRect().top<vh*.4)i=k;});
+  if(i===cur)return;cur=i;
+  links.forEach((a,k)=>{if(k===i)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
+  if(i>=0){const a=links[i];list.scrollTo({left:a.offsetLeft-(list.clientWidth-a.offsetWidth)/2,behavior:RM?'auto':'smooth'});}
+}
+function queue(){if(!queued){queued=true;requestAnimationFrame(update);}}
+addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);queue();
+
+/* enlaces internos con desplazamiento suave */
+root.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  const id=a.getAttribute('href').slice(1);const t=id&&document.getElementById(id);
+  if(!t||!root.contains(t))return;
+  e.preventDefault();t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
+  history.replaceState(null,'','#'+id);
+});
+})();
+</script>
 </body>
 </html>
