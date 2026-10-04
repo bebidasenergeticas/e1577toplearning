@@ -74,6 +74,8 @@
 .menu-options { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: calc(var(--u) * 3); padding-top: 20px; border-top: 1px solid #2e2e32; font-size: 15px; color: #a9a9ae; }
 .menu-options label { display: flex; gap: 10px; align-items: center; cursor: pointer; }
 .menu-options input { width: 18px; height: 18px; accent-color: #5ba8ff; }
+.menu-prev { margin-left: auto; color: #f2f0eb; text-decoration: none; border: 1px solid #3d3d42; border-radius: 999px; padding: 6px 14px; }
+.menu-prev:hover, .menu-prev:focus-visible { border-color: #5ba8ff; }
 
 /* ── Ayuda ── */
 .help-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 10px 40px; }

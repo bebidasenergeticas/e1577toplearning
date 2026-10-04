@@ -1,5 +1,6 @@
 /* Índice de capítulos (tecla M) y ayuda de atajos (tecla ?). */
 import { motion, setReduced, setLite } from '../core/motion.js';
+import { COURSE } from '../content/chapters.js';
 
 let lastFocus = null;
 
@@ -33,6 +34,7 @@ export function initMenu(director) {
       <label><input type="checkbox" id="opt-motion" ${motion.reduced ? 'checked' : ''}> Reducir movimiento</label>
       <label><input type="checkbox" id="opt-lite" ${motion.lite ? 'checked' : ''}> 3D ligero (menos carga para la computadora)</label>
       <span>Los cambios se aplican al recargar la página.</span>
+      ${COURSE.previous ? `<a class="menu-prev" href="${COURSE.previous.href}">← ${COURSE.previous.title}</a>` : ''}
     </div>`;
 
   help.innerHTML = `

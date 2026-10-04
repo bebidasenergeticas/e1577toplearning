@@ -16,6 +16,8 @@ export const COURSE = {
   title: 'De una idea a una página web funcional con Inteligencia Artificial',
   short: 'De una idea a una web',
   org: 'Top Learning',
+  /* Enlace a la clase anterior (mismo sitio de GitHub Pages) */
+  previous: { title: 'Clase anterior: LLMs y Prompting Efectivo II', href: '../' },
 };
 
 export const CHAPTERS = [
