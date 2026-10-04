@@ -338,6 +338,8 @@ path.rail.am{stroke:var(--amber)}path.rail.mi{stroke:var(--mint)}path.rail.faint
 /* ───────── Guía de clase: sección minimalista en grafito (después de la presentación) ───────── */
 .hud-guide{pointer-events:auto;margin-left:14px;color:var(--fg);text-decoration:none;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;transition:border-color .2s,color .2s}
 .hud-guide:hover,.hud-guide:focus-visible{border-color:var(--cyan);color:var(--cyan);outline:none}
+.hud-next{margin-left:10px}
+@media (max-width:900px){.hud-next{display:none}}
 .srail button[data-clase]{margin-top:10px}
 .srail button[data-clase] .rn{color:var(--fg)}
 .hud,.srail,.keys,.progress{transition:opacity .3s,visibility .3s}
@@ -707,7 +709,7 @@ body.in-clase .hud,body.in-clase .srail,body.in-clase .keys,body.in-clase .progr
 </defs></svg>
 <canvas id="gl" aria-hidden="true"></canvas>
 <header class="hud">
-  <span class="hud-brand">TOP LEARNING <b>·</b> E1577<a class="hud-guide" href="#clase">GUÍA ↓</a></span>
+  <span class="hud-brand">TOP LEARNING <b>·</b> E1577<a class="hud-guide" href="#clase">GUÍA ↓</a><a class="hud-guide hud-next" href="de-idea-a-web/">NUEVA CLASE: DE UNA IDEA A UNA WEB →</a></span>
   <span class="hud-scene" id="hudScene">01 / 19 · INTRO</span>
 </header>
 <div class="progress" aria-hidden="true"><span id="prog"></span></div>
@@ -1413,7 +1415,7 @@ MENSAJE DEL CLIENTE:
   </div>
   <footer class="c-foot">
     <span>Top Learning · E1577 · Nivel 2 · Módulo 4</span>
-    <nav aria-label="Navegación final"><a href="#clase">Inicio de la guía ↑</a><a href="#s1">Volver a la presentación ↑</a></nav>
+    <nav aria-label="Navegación final"><a href="#clase">Inicio de la guía ↑</a><a href="#s1">Volver a la presentación ↑</a><a href="de-idea-a-web/">Siguiente clase: De una idea a una web →</a></nav>
   </footer>
 </section>
 

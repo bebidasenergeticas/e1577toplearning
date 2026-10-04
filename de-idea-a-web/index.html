@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>De una idea a una página web funcional con IA · E1577</title>
+  <meta name="description" content="Presentación interactiva de la clase E1577: qué es una página web, frontend, backend, APIs, webhooks y cómo construir una web con inteligencia artificial." />
+  <meta name="theme-color" content="#111111" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <script type="module" crossorigin src="./assets/main-7cPIj3z8.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/notes-DIBR3bv4.js">
+  <link rel="stylesheet" crossorigin href="./assets/notes-BleophZH.css">
+  <link rel="stylesheet" crossorigin href="./assets/main-DiWGg-eD.css">
+</head>
+<body class="theme-dark is-loading">
+  <a class="skip-link" href="#menu" data-open-menu>Saltar al índice de capítulos</a>
+
+  <!-- Capas fijas: fondo → 3D → etiquetas 3D -->
+  <div id="bg" aria-hidden="true"><div id="bg-split"></div></div>
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div id="labels" aria-hidden="true"></div>
+
+  <!-- HUD del presentador -->
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+  <header class="hud">
+    <button class="hud-brand" type="button" data-open-menu aria-label="Abrir índice de capítulos">
+      <span class="hud-code">E1577</span><span class="hud-sep">·</span><span class="hud-name">De una idea a una web</span>
+    </button>
+    <div class="hud-right">
+      <span class="hud-chapter" id="hud-chapter" aria-hidden="true"><b>00</b><span>Intro</span></span>
+      <button class="hud-btn" type="button" id="btn-notes" title="Notas del profesor (N)">Notas</button>
+      <button class="hud-btn" type="button" data-open-menu title="Índice de capítulos (M)">Índice</button>
+    </div>
+  </header>
+  <nav class="rail" id="rail" aria-label="Capítulos"></nav>
+  <p class="keys-hint" id="keys-hint" aria-hidden="true">↓ siguiente · ↑ anterior · M índice · N notas · ? ayuda</p>
+
+  <main id="chapters" aria-label="Presentación"></main>
+
+  <!-- Overlays -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title" hidden></div>
+  <div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden></div>
+  <aside class="notes-panel" id="notes-panel" aria-label="Notas del profesor" hidden></aside>
+  <div class="blackout" id="blackout" hidden><p>Pausa · presiona B para continuar</p></div>
+  <div class="jump-cover" id="jump-cover" aria-hidden="true"></div>
+  <div class="sr-only" id="live" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:40px;font:18px system-ui">Esta presentación necesita JavaScript activado.</p></noscript>
+</body>
+</html>

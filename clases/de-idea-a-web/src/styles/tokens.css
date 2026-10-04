@@ -1,0 +1,86 @@
+/* ════════════════════════════════════════════════════════════════
+   TOKENS — único lugar para cambiar colores, tipografía y escala.
+   ────────────────────────────────────────────────────────────────
+   · Modo oscuro  = lo que ocurre detrás (infraestructura, sistemas).
+   · Modo claro   = lo que la persona ve y define.
+   · --signal     = datos / conexiones / peticiones en movimiento.
+   · --ok         = respuesta / completado.
+   · --error      = solo retroalimentación del quiz.
+   Si cambias un color aquí, cámbialo también en src/three/palette.js
+   (los objetos 3D usan la misma paleta).
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Paleta base ── */
+  --c-graphite-0: #111111;
+  --c-graphite-1: #161616;
+  --c-graphite-2: #1d1d1f;
+  --c-bone-0: #f3f0e9;
+  --c-bone-1: #f7f4ee;
+
+  /* ── Tipografía ── */
+  --f-sans: 'Geist Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* ── Escala tipo keynote ──
+     1u ≈ 19.2px en 1920×1080 · 14.4px en 1440×900 · 13.66px en 1366×768 */
+  --u: min(1vw, 1.7778vh);
+
+  --t-display: clamp(44px, calc(var(--u) * 6.2), 132px);
+  --t-h1: clamp(34px, calc(var(--u) * 4.2), 92px);
+  --t-h2: clamp(26px, calc(var(--u) * 2.7), 60px);
+  --t-lead: clamp(19px, calc(var(--u) * 1.55), 34px);
+  --t-body: clamp(17px, calc(var(--u) * 1.3), 28px);
+  --t-small: clamp(15px, calc(var(--u) * 1.05), 22px);
+  --t-label: clamp(12px, calc(var(--u) * 0.82), 17px);
+  --t-code: clamp(14px, calc(var(--u) * 1.08), 23px);
+
+  --m: calc(var(--u) * 5);        /* margen lateral de escena */
+  --m-top: calc(var(--u) * 7.2);  /* espacio superior (debajo del HUD) */
+
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --radius: calc(var(--u) * 0.7);
+}
+
+/* ── Tema oscuro (por defecto) ── */
+:root,
+.theme-dark {
+  --bg: var(--c-graphite-0);
+  --bg-2: var(--c-graphite-1);
+  --surface: var(--c-graphite-2);
+  --surface-2: #232326;
+  --line: #2e2e32;
+  --line-2: #3d3d42;
+  --text: #f2f0eb;
+  --text-2: #a9a9ae;
+  --text-3: #7c7c82;      /* solo texto grande o decorativo */
+  --signal: #5ba8ff;
+  --signal-soft: rgba(91, 168, 255, .14);
+  --ok: #4cc38a;
+  --ok-soft: rgba(76, 195, 138, .14);
+  --error: #e58a70;
+  --error-soft: rgba(229, 138, 112, .14);
+  --code-bg: #161618;
+  color-scheme: dark;
+}
+
+/* ── Tema claro ── */
+.theme-light {
+  --bg: var(--c-bone-0);
+  --bg-2: var(--c-bone-1);
+  --surface: #ffffff;
+  --surface-2: #ece8df;
+  --line: #ddd7cb;
+  --line-2: #c9c2b4;
+  --text: #161616;
+  --text-2: #53514c;
+  --text-3: #7d7a73;      /* solo texto grande o decorativo */
+  --signal: #1a4fe0;
+  --signal-soft: rgba(26, 79, 224, .1);
+  --ok: #1b7a51;
+  --ok-soft: rgba(27, 122, 81, .1);
+  --error: #b0452c;
+  --error-soft: rgba(176, 69, 44, .1);
+  --code-bg: #161618;
+  color-scheme: light;
+}
