@@ -1,0 +1,47 @@
+/* Ventana de notas del profesor (privada). */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; }
+html.big { font-size: 19px; }
+body {
+  margin: 0; background: #f7f4ee; color: #161616; font-family: 'Geist Variable', system-ui, sans-serif; line-height: 1.5;
+  padding: 18px 20px 28px; -webkit-font-smoothing: antialiased;
+}
+h1, h2, p, ol { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid #1a4fe0; outline-offset: 2px; }
+
+.n-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding-bottom: 14px; border-bottom: 1px solid #ddd7cb; }
+.n-eyebrow { font-family: 'Geist Mono Variable', monospace; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #1a4fe0; }
+.n-title { font-size: 1.45rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; margin-top: 4px; }
+.n-meta { color: #53514c; font-size: .9rem; margin-top: 4px; }
+.n-clock { text-align: right; font-family: 'Geist Mono Variable', monospace; font-size: .85rem; color: #53514c; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.n-clock #n-time { font-size: 1.3rem; color: #161616; }
+.n-timer b { font-weight: 500; color: #161616; }
+.n-timer button { border: 1px solid #c9c2b4; background: #fff; border-radius: 999px; padding: 2px 10px; font-size: .78rem; }
+
+.n-controls { display: flex; gap: 8px; margin: 14px 0 6px; flex-wrap: wrap; }
+.n-controls button { border: 1px solid #c9c2b4; background: #fff; border-radius: 10px; padding: 9px 14px; font-size: .95rem; }
+.n-controls .primary { background: #161616; color: #f7f4ee; border-color: #161616; flex: 1; }
+.n-status { font-size: .82rem; color: #8a5a00; margin-bottom: 8px; }
+.n-status.ok { color: #1b7a51; }
+
+.n-body { display: flex; flex-direction: column; gap: 10px; }
+.n-sec { background: #fff; border: 1px solid #e3ddd1; border-radius: 12px; padding: 12px 14px; }
+.n-sec h2 { font-family: 'Geist Mono Variable', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: #53514c; font-weight: 500; margin-bottom: 4px; }
+.n-sec.key { border-color: #1a4fe0; }
+.n-sec.key h2 { color: #1a4fe0; }
+.n-sec.ask { background: #161616; color: #f7f4ee; border-color: #161616; }
+.n-sec.ask h2 { color: #9cc6ff; }
+.n-sec.ask p { font-size: 1.12rem; font-weight: 500; }
+.n-steps { padding-left: 1.3em; display: flex; flex-direction: column; gap: 3px; color: #7d7a73; }
+.n-steps li.is-done { color: #a8a399; }
+.n-steps li.is-now { color: #161616; font-weight: 600; }
+.n-next { margin-top: 6px; font-size: .9rem; color: #53514c; }
+
+.n-index { margin-top: 16px; border-top: 1px solid #ddd7cb; padding-top: 12px; }
+.n-index summary { cursor: pointer; font-weight: 500; }
+#n-index { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+#n-index button { text-align: left; border: 1px solid #e3ddd1; background: #fff; border-radius: 8px; padding: 7px 10px; font-size: .85rem; }
+#n-index button span { font-family: 'Geist Mono Variable', monospace; color: #1a4fe0; margin-right: 4px; }
+#n-index button.is-current { border-color: #1a4fe0; }
+.n-foot { margin-top: 18px; font-size: .78rem; color: #7d7a73; }

@@ -1,0 +1,7 @@
+# Netlify: configura "Base directory" = clases/de-idea-a-web (o deja que lo lea de aquí).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
